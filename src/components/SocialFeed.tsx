@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Instagram } from 'lucide-react';
 
 interface SocialPost {
@@ -14,6 +14,7 @@ interface SocialPost {
 const SocialFeed = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Mock Instagram posts
   const instagramPosts: SocialPost[] = [
@@ -49,11 +50,14 @@ const SocialFeed = () => {
   ];
 
   useEffect(() => {
+    // Ensure content is visible immediately on client-side
+    setIsVisible(true);
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Animate section
+            // Add animation classes when section is visible
             entry.target.classList.add('animate-fade-in');
             
             // Animate phone with delay
@@ -82,7 +86,7 @@ const SocialFeed = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="py-20 px-6 md:px-12 opacity-0"
+      className={`py-20 px-6 md:px-12 ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">

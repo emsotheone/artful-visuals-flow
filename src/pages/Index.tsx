@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Portfolio from '../components/Portfolio';
@@ -9,9 +9,14 @@ import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 
 const Index = () => {
+  const [contentLoaded, setContentLoaded] = useState(false);
+
   useEffect(() => {
-    // Smooth scroll behavior for the entire page
+    // Ensure smooth scroll behavior for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Ensure content is visible on client-side
+    setContentLoaded(true);
     
     return () => {
       document.documentElement.style.scrollBehavior = '';
@@ -19,7 +24,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className={`min-h-screen bg-background text-foreground overflow-x-hidden transition-opacity duration-300 ${contentLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navbar />
       <Hero />
       
