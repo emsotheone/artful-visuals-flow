@@ -15,7 +15,7 @@ const Index = () => {
     // Ensure smooth scroll behavior for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
     
-    // Ensure content is visible on client-side
+    // Immediately set content as loaded on client side to ensure visibility
     setContentLoaded(true);
     
     return () => {
@@ -24,7 +24,10 @@ const Index = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-background text-foreground overflow-x-hidden transition-opacity duration-300 ${contentLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div 
+      className={`min-h-screen bg-background text-foreground overflow-x-hidden ${contentLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+      suppressHydrationWarning
+    >
       <Navbar />
       <Hero />
       

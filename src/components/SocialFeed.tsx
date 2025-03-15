@@ -7,13 +7,10 @@ const SocialFeed = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Set initial state to true
 
   useEffect(() => {
-    // Ensure content is visible immediately on client-side
-    setIsVisible(true);
-    
-    // Simple animation without IntersectionObserver to avoid content disappearing
+    // Simple animation implementation that doesn't rely on visibility changes
     if (sectionRef.current) {
       sectionRef.current.classList.add('animate-fade-in');
     }
@@ -39,7 +36,7 @@ const SocialFeed = () => {
   return (
     <section 
       ref={sectionRef} 
-      className={`py-20 px-6 md:px-12 ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+      className="py-20 px-6 md:px-12 opacity-100 transition-opacity duration-300"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -57,21 +54,21 @@ const SocialFeed = () => {
           ref={statsRef}
           className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16"
         >
-          <div className="stat-item opacity-0 flex items-center space-x-3">
+          <div className="stat-item flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
               <Rocket size={20} />
             </div>
             <p className="text-white font-medium">Über 50 Millionen Views auf Kundenprojekten</p>
           </div>
           
-          <div className="stat-item opacity-0 flex items-center space-x-3">
+          <div className="stat-item flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
               <Film size={20} />
             </div>
             <p className="text-white font-medium">Filmmaker & Photographer</p>
           </div>
           
-          <div className="stat-item opacity-0 flex items-center space-x-3">
+          <div className="stat-item flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
               <MapPin size={20} />
             </div>
