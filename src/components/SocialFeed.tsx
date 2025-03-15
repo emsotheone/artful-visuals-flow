@@ -1,11 +1,12 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { Instagram, Youtube, Linkedin, MessageCircle } from 'lucide-react';
+import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, Film, MapPin } from 'lucide-react';
 import SocialMediaPlatformItem from './SocialMediaPlatformItem';
 
 const SocialFeed = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -24,6 +25,16 @@ const SocialFeed = () => {
               setTimeout(() => {
                 phoneRef.current?.classList.add('animate-float');
               }, 300);
+            }
+            
+            // Animate stats with staggered delay
+            if (statsRef.current) {
+              const statItems = statsRef.current.querySelectorAll('.stat-item');
+              statItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add('animate-fade-in');
+                }, 300 + (index * 150));
+              });
             }
           }
         });
@@ -56,6 +67,33 @@ const SocialFeed = () => {
           <p className="text-white/70 max-w-2xl mx-auto">
             Ich erstelle professionelle Foto- und Videoinhalte, die genau auf die Anforderungen der wichtigsten Social Media Plattformen abgestimmt sind – von Instagram und TikTok bis LinkedIn und YouTube.
           </p>
+        </div>
+        
+        {/* Statistics Section */}
+        <div 
+          ref={statsRef}
+          className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16"
+        >
+          <div className="stat-item opacity-0 flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
+              <Rocket size={20} />
+            </div>
+            <p className="text-white font-medium">Über 50 Millionen Views auf Kundenprojekten</p>
+          </div>
+          
+          <div className="stat-item opacity-0 flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
+              <Film size={20} />
+            </div>
+            <p className="text-white font-medium">Filmmaker & Photographer</p>
+          </div>
+          
+          <div className="stat-item opacity-0 flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
+              <MapPin size={20} />
+            </div>
+            <p className="text-white font-medium">Basierend in Frankfurt, verfügbar weltweit</p>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
@@ -119,7 +157,7 @@ const SocialFeed = () => {
             
             <a 
               href="/kontakt" 
-              className="inline-block mt-8 px-8 py-4 bg-yellow-400 text-black rounded-full hover:opacity-90 transition-opacity duration-300 text-sm uppercase tracking-wider font-medium"
+              className="inline-block mt-8 px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-opacity duration-300 text-sm uppercase tracking-wider font-medium"
             >
               Jetzt Social Media Projekt starten
             </a>
