@@ -15,6 +15,7 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const portfolioRef = useRef<HTMLDivElement>(null);
 
   // Sample projects data
@@ -69,29 +70,22 @@ const Portfolio = () => {
     ? projects.filter(project => project.category === selectedCategory)
     : projects;
 
+  // Set images as loaded initially
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    setImagesLoaded(true);
+  }, []);
 
-    const projects = document.querySelectorAll('.project-item');
-    projects.forEach(project => {
-      observer.observe(project);
+  // Modified animation approach - don't use IntersectionObserver that hides content
+  useEffect(() => {
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    // Add animation class directly without intersection observer
+    projectItems.forEach(project => {
+      if (!project.classList.contains('animate-fade-in')) {
+        project.classList.add('animate-fade-in');
+      }
     });
-
-    return () => {
-      projects.forEach(project => {
-        observer.unobserve(project);
-      });
-    };
-  }, [filteredProjects]);
+  }, [filteredProjects, imagesLoaded]);
 
   const openFullScreen = (project: Project) => {
     setSelectedProject(project);
@@ -158,7 +152,7 @@ const Portfolio = () => {
             {filteredProjects.map((project) => (
               <div 
                 key={project.id}
-                className="project-item flex-shrink-0 w-[350px] h-[500px] relative overflow-hidden rounded-md snap-start opacity-0"
+                className="project-item flex-shrink-0 w-[350px] h-[500px] relative overflow-hidden rounded-md snap-start opacity-100"
                 onClick={() => openFullScreen(project)}
               >
                 <div className="image-container h-full">
@@ -190,14 +184,14 @@ const Portfolio = () => {
         </div>
 
         {/* Full Portfolio Grid */}
-        <div className="portfolio-gallery mt-20">
+        <div className="portfolio-gallery mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
             <div 
               key={`grid-${project.id}`}
-              className="project-item relative overflow-hidden rounded-md opacity-0 cursor-pointer"
+              className="project-item relative overflow-hidden rounded-md opacity-100 cursor-pointer"
               onClick={() => openFullScreen(project)}
             >
-              <div className="image-container h-full">
+              <div className="image-container h-full" style={{ minHeight: '300px' }}>
                 <img 
                   src={project.imageUrl} 
                   alt={project.title} 
