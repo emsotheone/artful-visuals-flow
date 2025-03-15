@@ -13,44 +13,27 @@ const SocialFeed = () => {
     // Ensure content is visible immediately on client-side
     setIsVisible(true);
     
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Add animation classes when section is visible
-            entry.target.classList.add('animate-fade-in');
-            
-            // Animate phone with delay
-            if (phoneRef.current) {
-              setTimeout(() => {
-                phoneRef.current?.classList.add('animate-float');
-              }, 300);
-            }
-            
-            // Animate stats with staggered delay
-            if (statsRef.current) {
-              const statItems = statsRef.current.querySelectorAll('.stat-item');
-              statItems.forEach((item, index) => {
-                setTimeout(() => {
-                  item.classList.add('animate-fade-in');
-                }, 300 + (index * 150));
-              });
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
+    // Simple animation without IntersectionObserver to avoid content disappearing
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      sectionRef.current.classList.add('animate-fade-in');
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    
+    // Animate phone with delay
+    if (phoneRef.current) {
+      setTimeout(() => {
+        phoneRef.current?.classList.add('animate-float');
+      }, 300);
+    }
+    
+    // Animate stats with staggered delay
+    if (statsRef.current) {
+      const statItems = statsRef.current.querySelectorAll('.stat-item');
+      statItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('animate-fade-in');
+        }, 300 + (index * 150));
+      });
+    }
   }, []);
 
   return (

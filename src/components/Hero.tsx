@@ -16,7 +16,7 @@ const Hero = () => {
       });
     }
 
-    // Animate title, subtitle and CTA
+    // Animate title, subtitle and CTA - using direct class manipulation instead of observer
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
     const cta = ctaRef.current;
