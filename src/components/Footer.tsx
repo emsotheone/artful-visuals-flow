@@ -40,7 +40,7 @@ const Footer = () => {
           
           {/* Links */}
           <div>
-            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6`}>Links</h4>
+            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6 uppercase`}>LINKS</h4>
             <ul className="space-y-4">
               <li>
                 <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
@@ -77,7 +77,7 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6`}>Kontakt</h4>
+            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6 uppercase`}>KONTAKT</h4>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail size={18} className={`${theme === 'light' ? 'text-gray-600' : 'text-white/60'} mt-1 mr-3 flex-shrink-0`} />
@@ -104,7 +104,7 @@ const Footer = () => {
           
           {/* Newsletter */}
           <div>
-            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6`}>Newsletter</h4>
+            <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6 uppercase`}>NEWSLETTER</h4>
             <p className={`${theme === 'light' ? 'text-gray-700' : 'text-white/60'} mb-4`}>
               Bleib inspiriert und erhalte Updates zu neuen Projekten und Angeboten.
             </p>
@@ -117,9 +117,9 @@ const Footer = () => {
               />
               <button 
                 type="submit"
-                className="w-full px-4 py-3 bg-[#FFCC00] text-black rounded-lg hover:bg-[#FFCC00]/90 transition-colors duration-300 font-medium"
+                className="w-full px-4 py-3 bg-[#FFCC00] text-black rounded-lg hover:bg-[#FFCC00]/90 transition-colors duration-300 font-medium uppercase"
               >
-                Abonnieren
+                ABONNIEREN
               </button>
             </form>
           </div>
