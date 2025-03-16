@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -7,6 +6,7 @@ import InstagramFeed from '../components/InstagramFeed';
 import { ArrowUp, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '../context/ThemeContext';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const AboutMe = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -79,17 +79,12 @@ const AboutMe = () => {
             </div>
             
             <div className="order-1 md:order-2 relative">
-              <div className="aspect-[9/16] rounded-lg overflow-hidden shadow-2xl image-shimmer">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-32269-large.mp4" type="video/mp4" />
-                  Dein Browser unterstützt kein Video.
-                </video>
+              <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-2xl image-shimmer">
+                <img 
+                  src="/lovable-uploads/60f6eb5d-ef3f-46a9-b70d-c37849c143de.png" 
+                  alt="Portrait of a man in black and white photography" 
+                  className="w-full h-full object-cover" 
+                />
               </div>
             </div>
           </div>
