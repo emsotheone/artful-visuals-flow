@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
@@ -202,26 +201,35 @@
     @apply text-white font-normal;
   }
   
-  /* Smooth transitions for all interactive elements */
-  a, button, .interactive {
-    @apply transition-all duration-300 ease-in-out;
+  /* Improved light mode text contrast */
+  .light-mode p {
+    @apply text-black/80;
   }
   
-  /* Enhance hover effects */
-  .hover-scale {
-    @apply transition-transform duration-300;
+  .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4, .light-mode h5, .light-mode h6 {
+    @apply text-black;
   }
   
-  .hover-scale:hover {
-    @apply transform scale-105;
+  /* Ensure footer text is legible in light mode */
+  .light-mode footer {
+    @apply text-black/80;
   }
   
-  .hover-brightness {
-    @apply transition-all duration-300;
+  .light-mode footer h3, .light-mode footer h4 {
+    @apply text-black;
   }
   
-  .hover-brightness:hover {
-    @apply brightness-110;
+  .light-mode footer a {
+    @apply text-black/80 hover:text-black;
+  }
+  
+  /* Additional styles for specific components */
+  .light-mode .social-feed-section p {
+    @apply text-black/80;
+  }
+  
+  .light-mode .services-section p {
+    @apply text-black/80;
   }
 }
 

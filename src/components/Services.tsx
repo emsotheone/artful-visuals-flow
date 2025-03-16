@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
@@ -35,7 +34,6 @@ const Services = () => {
   const categoryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Initialize active slides
     const initialSlides: Record<number, number> = {};
     services.forEach(service => {
       initialSlides[service.id] = 0;
@@ -43,7 +41,6 @@ const Services = () => {
     setActiveSlides(initialSlides);
   }, []);
 
-  // Sample services data
   const services: Service[] = [
     {
       id: 1,
@@ -176,15 +173,14 @@ const Services = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text uppercase tracking-wider">
             SERVICES
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto mb-3">
-            Individuelle Medienproduktionen für deine Vision
+          <p className="text-white/70 dark:text-white/70 light-mode:text-black/70 max-w-2xl mx-auto mb-3 uppercase tracking-wide">
+            INDIVIDUELLE MEDIENPRODUKTIONEN FÜR DEINE VISION
           </p>
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="text-white/60 dark:text-white/60 light-mode:text-black/60 max-w-2xl mx-auto">
             Von kreativen Werbeproduktionen bis hin zu einzigartigen Event-Coverages – entdecke meine Services, die Geschichten lebendig machen.
           </p>
         </div>
 
-        {/* Category Navigation - Improved for mobile */}
         <div className="sticky top-24 z-10 py-4 backdrop-blur-sm mb-12">
           <div 
             ref={categoryRef}
@@ -208,13 +204,11 @@ const Services = () => {
               </motion.button>
             ))}
           </div>
-          {/* Mobile scroll indicator */}
           <div className="md:hidden w-full h-4 pointer-events-none absolute bottom-0 left-0 right-0">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/80 opacity-40"></div>
           </div>
         </div>
 
-        {/* Full-Width, Clean Visual Services Layout */}
         <div className="space-y-32">
           {filteredServices.map((service, index) => {
             const activeSlide = activeSlides[service.id] || 0;
@@ -228,7 +222,6 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="relative"
               >
-                {/* Full-Width, Clean Visual Container */}
                 <div 
                   className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden cursor-pointer group"
                   onClick={() => openServiceDetails(service)}
@@ -238,7 +231,6 @@ const Services = () => {
                     whileHover={{ scale: 1.03, filter: "brightness(1.1)" }}
                     transition={{ duration: 0.5 }}
                   >
-                    {/* Auto-playing Media - Video or Image */}
                     {service.media && service.media.length > 1 ? (
                       <div className="w-full h-full">
                         <img 
@@ -257,17 +249,14 @@ const Services = () => {
                       />
                     )}
                     
-                    {/* Subtle Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
                     
-                    {/* Minimal Badge with Title Only - Top Right */}
                     <div className="absolute top-6 right-6 p-2 text-right">
                       <Badge className="mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full uppercase">
                         {service.title}
                       </Badge>
                     </div>
                     
-                    {/* Subtle Play Icon - Center, Only Visible on Hover */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-70 transition-opacity duration-300">
                       <motion.div 
                         className="p-4 rounded-full bg-black/50 backdrop-blur-sm border border-white/20"
@@ -279,7 +268,6 @@ const Services = () => {
                   </motion.div>
                 </div>
                 
-                {/* Carousel Indicators - Only if multiple media */}
                 {hasMultipleMedia && (
                   <div className="flex justify-center mt-4 space-x-2">
                     {service.media?.map((_, idx) => (
@@ -302,7 +290,6 @@ const Services = () => {
           })}
         </div>
 
-        {/* Service Detail Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="bg-black/95 border-white/10 text-white max-w-4xl p-0 overflow-hidden">
             <DialogTitle className="sr-only">Service Details</DialogTitle>
@@ -381,7 +368,6 @@ const Services = () => {
           </DialogContent>
         </Dialog>
 
-        {/* Single Bottom CTA */}
         <div className="text-center mt-20">
           <motion.a 
             href="/kontakt"

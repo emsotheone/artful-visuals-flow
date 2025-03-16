@@ -32,21 +32,8 @@ const Index = () => {
       <Navbar />
       <Hero />
       
-      {/* Social Media Section moved to top */}
-      <section className="py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="font-medium text-white/50 uppercase tracking-widest text-sm">SOCIAL MEDIA CONTENT</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
-              VISUELLES STORYTELLING FÜR JEDE PLATTFORM
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Ich erstelle professionelle Foto- und Videoinhalte, die genau auf die Anforderungen der wichtigsten Social Media Plattformen abgestimmt sind – von Instagram und TikTok bis LinkedIn und YouTube.
-            </p>
-          </div>
-        </div>
-        <SocialFeed />
-      </section>
+      {/* Social Media Section */}
+      <SocialFeed />
       
       {/* Services Section - Replacing Portfolio */}
       <Services />
