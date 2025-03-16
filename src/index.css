@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
@@ -183,6 +184,45 @@
   .image-saturate-hover:hover {
     @apply filter saturate-100;
   }
+  
+  /* Enhanced styling for light/dark mode text contrast */
+  .light-mode .text-adaptive {
+    @apply text-gray-800;
+  }
+  
+  .text-adaptive {
+    @apply text-white/80;
+  }
+  
+  .light-mode .heading-adaptive {
+    @apply text-gray-900 font-medium;
+  }
+  
+  .heading-adaptive {
+    @apply text-white font-normal;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  a, button, .interactive {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  /* Enhance hover effects */
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+  
+  .hover-scale:hover {
+    @apply transform scale-105;
+  }
+  
+  .hover-brightness {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-brightness:hover {
+    @apply brightness-110;
+  }
 }
 
 .image-container {
@@ -255,4 +295,3 @@
   border-radius: 50%;
   background: white;
 }
-

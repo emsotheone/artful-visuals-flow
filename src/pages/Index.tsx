@@ -33,7 +33,20 @@ const Index = () => {
       <Hero />
       
       {/* Social Media Section moved to top */}
-      <SocialFeed />
+      <section className="py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="font-medium text-white/50 uppercase tracking-widest text-sm">Social Media Content</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
+              VISUELLES STORYTELLING FÜR JEDE PLATTFORM
+            </h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Ich erstelle professionelle Foto- und Videoinhalte, die genau auf die Anforderungen der wichtigsten Social Media Plattformen abgestimmt sind – von Instagram und TikTok bis LinkedIn und YouTube.
+            </p>
+          </div>
+        </div>
+        <SocialFeed />
+      </section>
       
       {/* Services Section - Replacing Portfolio */}
       <Services />
@@ -44,7 +57,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <span className="font-medium text-white/50 uppercase tracking-widest text-sm">Retusche & Coloring</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
-              Die Kunst der Nachbearbeitung
+              DIE KUNST DER NACHBEARBEITUNG
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto">
               Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
@@ -86,7 +99,7 @@ const Index = () => {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider">
-            Lass uns gemeinsam deine Geschichte erzählen
+            LASS UNS GEMEINSAM DEINE GESCHICHTE ERZÄHLEN
           </h2>
           <p className="text-white/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
             Ob für kommerzielle Zwecke oder persönliche Projekte – ich setze deine Ideen mit Leidenschaft und Präzision um.
