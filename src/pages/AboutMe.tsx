@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -138,7 +139,7 @@ const AboutMe = () => {
       
       <section className="py-20 px-6 md:px-12 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F1F0FB] via-[#F6F6F7] to-[#FFFFFF]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-background dark:from-black/30 dark:via-black/20 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]"></div>
           <video
             autoPlay
             muted
@@ -152,19 +153,19 @@ const AboutMe = () => {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <span className="font-medium text-gray-600 uppercase tracking-widest text-sm">Equipment</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase text-gray-900">
+            <span className="font-medium text-white/50 uppercase tracking-widest text-sm light-mode:text-gray-600">Equipment</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase text-white light-mode:text-gray-900">
               MEINE WERKZEUGE
             </h2>
-            <p className="text-gray-700 max-w-2xl mx-auto">
+            <p className="text-white/70 max-w-2xl mx-auto light-mode:text-gray-700">
               Qualität beginnt mit dem richtigen Equipment. Das ist meine Ausrüstung für professionelle Ergebnisse.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white shadow-md border border-gray-100 rounded-xl p-6 hover-lift transition-all duration-300">
-              <h3 className="text-xl font-display font-bold mb-4 text-gray-900">Cameras</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Cameras</h3>
+              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
                 <li>Sony Alpha A7S III</li>
                 <li>Canon EOS R5</li>
                 <li>DJI Ronin 4D</li>
@@ -172,9 +173,9 @@ const AboutMe = () => {
               </ul>
             </div>
             
-            <div className="bg-white shadow-md border border-gray-100 rounded-xl p-6 hover-lift transition-all duration-300">
-              <h3 className="text-xl font-display font-bold mb-4 text-gray-900">Objektive</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Objektive</h3>
+              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
                 <li>Sony GM 24-70mm f/2.8</li>
                 <li>Canon RF 50mm f/1.2</li>
                 <li>Sigma Art 35mm f/1.4</li>
@@ -182,9 +183,9 @@ const AboutMe = () => {
               </ul>
             </div>
             
-            <div className="bg-white shadow-md border border-gray-100 rounded-xl p-6 hover-lift transition-all duration-300">
-              <h3 className="text-xl font-display font-bold mb-4 text-gray-900">Zubehör</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Zubehör</h3>
+              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
                 <li>DJI RS 3 Pro Gimbal</li>
                 <li>Godox Lichtsystem</li>
                 <li>Rode Wireless Pro</li>
