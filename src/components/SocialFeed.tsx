@@ -111,7 +111,7 @@ const SocialFeed = () => {
           {/* Social Media Text Content with Seal - Full width on mobile, padding adjusted */}
           <div className="w-full lg:max-w-lg px-2">
             <h3 className={`text-3xl md:text-4xl font-display font-bold mb-6 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-              MASSGESCHNEIDERTE INHALTE FÜR JEDE PLATTFORM
+              CONTENT, DER DEINE ZIELGRUPPE ERREICHT
             </h3>
             <p className={theme === "dark" ? "text-white/80 mb-8" : "text-black/80 mb-8"}>
               Ob vertikale Reels, YouTube Shorts oder kreative TikTok-Videos – ich kenne die Formate und Trends, um deine Zielgruppe optimal zu erreichen und deine Marke eindrucksvoll zu präsentieren.
