@@ -137,9 +137,9 @@ const AboutMe = () => {
         </div>
       </section>
       
-      <section className="py-20 px-6 md:px-12 relative overflow-hidden">
+      <section className="py-20 px-6 md:px-12 relative overflow-hidden bg-gradient-to-b from-gray-950 to-background dark:from-gray-950 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-background dark:from-black/30 dark:via-black/20 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background dark:from-black/60 dark:via-black/40 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]"></div>
           <video
             autoPlay
             muted
