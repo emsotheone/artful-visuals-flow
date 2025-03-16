@@ -1,9 +1,8 @@
-
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogClose, DialogTitle } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
@@ -165,8 +164,8 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Category Navigation */}
-        <div className="sticky top-24 z-10 py-4 bg-black/80 backdrop-blur-sm mb-12">
+        {/* Category Navigation - Simplified with transparent background */}
+        <div className="sticky top-24 z-10 py-4 backdrop-blur-sm mb-12">
           <div className="flex justify-center space-x-4 overflow-x-auto scrollbar-none pb-2">
             {categories.map(category => (
               <motion.button
@@ -175,7 +174,7 @@ const Services = () => {
                 className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap ${
                   selectedCategory === category
                     ? 'bg-[#FFCC00] text-black'
-                    : 'bg-white/10 text-white hover:bg-white/20'
+                    : 'bg-white/5 text-white hover:bg-white/10'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -186,7 +185,7 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Full-Width, Alternating Layout */}
+        {/* Full-Width, Clean Visual Services Layout */}
         <div className="space-y-32">
           {filteredServices.map((service, index) => {
             const isReversed = index % 2 === 1;
@@ -199,80 +198,56 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="relative"
               >
-                {/* Full-Width Image Container */}
+                {/* Full-Width, Clean Visual Container */}
                 <div 
                   className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden cursor-pointer group"
                   onClick={() => openServiceDetails(service)}
                 >
                   <motion.div 
                     className="relative w-full h-full"
-                    whileHover={{ scale: 1.03 }}
+                    whileHover={{ scale: 1.03, filter: "brightness(1.1)" }}
                     transition={{ duration: 0.5 }}
                   >
-                    <img 
-                      src={service.imageUrl} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover transition-transform duration-700"
-                      loading="lazy"
-                    />
+                    {/* Autoplay Video or Image */}
+                    {service.media && service.media.length > 1 ? (
+                      <div className="w-full h-full">
+                        <img 
+                          src={service.imageUrl} 
+                          alt={service.title} 
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <img 
+                        src={service.imageUrl} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    )}
                     
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    {/* Minimal Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
                     
-                    {/* Content Overlay - Always Visible */}
-                    <div className={`absolute ${isReversed ? 'left-0' : 'right-0'} bottom-0 p-8 w-full md:w-1/2 transition-all duration-300`}>
-                      <span className="inline-block px-3 py-1 mb-3 text-xs font-medium tracking-wider bg-[#FFCC00]/90 text-black rounded-full">
+                    {/* Minimal Title Overlay - Top Right */}
+                    <div className="absolute top-6 right-6 p-2 text-right">
+                      <span className="inline-block px-3 py-1 mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full">
                         {service.category}
                       </span>
-                      <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">{service.title}</h3>
-                      <p className="text-white/80 mb-6 transform transition-all duration-300">{service.shortDescription}</p>
-                      
-                      {/* Feature List - Visible on larger screens */}
-                      <div className="hidden md:block space-y-3 mb-6">
-                        {service.features.map((feature) => (
-                          <HoverCard key={feature.id}>
-                            <HoverCardTrigger asChild>
-                              <div className="flex items-start space-x-3 cursor-pointer">
-                                <div className="shrink-0 mt-0.5">
-                                  <div className="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
-                                    <ChevronRight size={14} className="text-black" />
-                                  </div>
-                                </div>
-                                <p className="font-medium text-white/90">{feature.title}</p>
-                              </div>
-                            </HoverCardTrigger>
-                            <HoverCardContent className="bg-black/95 border-white/20 text-white w-80">
-                              <div className="space-y-2">
-                                <h4 className="font-semibold">{feature.title}</h4>
-                                <p className="text-sm text-white/80">{feature.description}</p>
-                              </div>
-                            </HoverCardContent>
-                          </HoverCard>
-                        ))}
-                      </div>
-                      
-                      {/* Play Button Overlay - Center of Image */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <motion.div 
-                          className="p-4 rounded-full bg-[#FFCC00]"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          <Play className="text-black" size={24} />
-                        </motion.div>
-                      </div>
-                      
-                      {/* CTA Button */}
-                      <motion.button
-                        className="px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openServiceDetails(service);
-                        }}
+                      <h3 className="text-xl md:text-2xl font-display uppercase tracking-wider text-white/90 font-light">
+                        {service.title}
+                      </h3>
+                    </div>
+                    
+                    {/* Subtle Play Icon - Center, Only Visible on Hover */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-70 transition-opacity duration-300">
+                      <motion.div 
+                        className="p-4 rounded-full bg-black/50 backdrop-blur-sm border border-white/20"
+                        whileHover={{ scale: 1.1 }}
                       >
-                        Jetzt anfragen
-                      </motion.button>
+                        <Play className="text-white" size={24} />
+                      </motion.div>
                     </div>
                   </motion.div>
                 </div>
@@ -284,6 +259,7 @@ const Services = () => {
         {/* Service Detail Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="bg-black/95 border-white/10 text-white max-w-4xl p-0 overflow-hidden">
+            <DialogTitle className="sr-only">Service Details</DialogTitle>
             <AnimatePresence>
               {selectedService && (
                 <motion.div
@@ -341,18 +317,12 @@ const Services = () => {
                       ))}
                     </div>
                     
-                    <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                    <div className="flex justify-center mt-6">
                       <Button 
                         className="px-8 py-6 bg-[#FFCC00] text-black hover:bg-[#FFCC00]/90 rounded-full text-sm uppercase tracking-wider"
                         asChild
                       >
                         <a href="/kontakt">Jetzt Projekt starten</a>
-                      </Button>
-                      <Button 
-                        className="px-8 py-6 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full text-sm uppercase tracking-wider"
-                        onClick={closeServiceDetails}
-                      >
-                        Zurück zu Services
                       </Button>
                     </div>
                   </div>
@@ -362,7 +332,7 @@ const Services = () => {
           </DialogContent>
         </Dialog>
 
-        {/* Services CTA */}
+        {/* Single Bottom CTA */}
         <div className="text-center mt-20">
           <motion.a 
             href="/kontakt"
