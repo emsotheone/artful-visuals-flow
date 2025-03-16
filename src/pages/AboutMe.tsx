@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import InstagramFeed from '../components/InstagramFeed';
 import { ArrowUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const AboutMe = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -68,7 +69,7 @@ const AboutMe = () => {
         </div>
       </section>
       
-      {/* Visual Artist Section (moved from Index) */}
+      {/* Visual Artist Section - Combined storytelling sections */}
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -84,20 +85,27 @@ const AboutMe = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
             <div className="order-2 md:order-1">
               <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 uppercase">
-                DIE KUNST DES VISUELLEN STORYTELLINGS
+                VISUELLE STORYS, DIE EMOTIONEN WECKEN
               </h3>
               <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Meine Leidenschaft ist es, durch die Linse Geschichten zu erzählen, die berühren und inspirieren. Mit einem Blick für Details und einer cinematic Bildsprache erschaffe ich visuelle Erlebnisse, die in Erinnerung bleiben.
+                Meine Leidenschaft ist es, durch die Linse Geschichten zu erzählen, die berühren und inspirieren. Das Zusammenspiel von Licht, Farbe und Bewegung fasziniert mich seit meiner Jugend. Was einst als Hobby begann, entwickelte sich zu einer Leidenschaft und schließlich zu meinem Beruf.
+              </p>
+              <p className="text-white/80 mb-6 light-mode:text-black/80">
+                Mit einem Blick für Details und einer cinematic Bildsprache erschaffe ich visuelle Erlebnisse, die in Erinnerung bleiben. Dabei suche ich stets nach der perfekten Balance zwischen technischer Präzision und künstlerischem Ausdruck. Meine Arbeiten sollen nicht nur ästhetisch ansprechend sein, sondern auch eine emotionale Verbindung zum Betrachter schaffen.
               </p>
               <p className="text-white/80 mb-8 light-mode:text-black/80">
-                Von kommerziellen Projekten bis hin zu künstlerischen Arbeiten – ich bringe deine Vision mit technischer Präzision und kreativem Flair zum Leben.
+                Von kommerziellen Projekten bis hin zu künstlerischen Arbeiten – ich bringe deine Vision mit technischer Perfektion und kreativem Flair zum Leben.
               </p>
-              <a 
-                href="/portfolio"
-                className="inline-block px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-              >
-                Mein Portfolio entdecken
-              </a>
+              <div className="flex justify-center md:justify-start">
+                <Button
+                  asChild
+                  className="px-8 py-6 bg-[#FFCC00] text-black hover:bg-[#FFCC00]/90 rounded-full border-none text-sm font-medium uppercase tracking-wider h-auto"
+                >
+                  <a href="/kontakt">
+                    GEMEINSAMES PROJEKT STARTEN
+                  </a>
+                </Button>
+              </div>
             </div>
             
             <div className="order-1 md:order-2 relative">
@@ -118,44 +126,6 @@ const AboutMe = () => {
         </div>
       </section>
       
-      {/* Biography Section */}
-      <section className="py-20 px-6 md:px-12 bg-black/50 light-mode:bg-gray-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-square rounded-lg overflow-hidden shadow-2xl image-shimmer">
-                <img 
-                  src="https://images.unsplash.com/photo-1597655601841-214a4d3f9add?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Portrait" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl md:text-3xl font-display font-bold mb-6 uppercase">
-                MEIN WEG ZUM VISUELLEN GESCHICHTENERZÄHLER
-              </h3>
-              <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Seit meiner Jugend fasziniert mich das Zusammenspiel von Licht, Farbe und Bewegung. Was als Hobby begann, entwickelte sich zu einer Leidenschaft und schließlich zu meinem Beruf.
-              </p>
-              <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Mit jedem Projekt suche ich nach der perfekten Balance zwischen technischer Präzision und künstlerischem Ausdruck. Dabei ist mir wichtig, dass meine Arbeiten nicht nur ästhetisch ansprechend sind, sondern auch eine emotionale Verbindung zum Betrachter herstellen.
-              </p>
-              <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Ob als Fotograf oder Videograf – ich setze auf einen cinematischen Stil, der Momente lebendig werden lässt und Geschichten authentisch vermittelt.
-              </p>
-              <a 
-                href="/kontakt"
-                className="inline-block px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-              >
-                Gemeinsames Projekt starten
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Instagram Section */}
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
@@ -167,21 +137,10 @@ const AboutMe = () => {
             <p className="text-white/70 max-w-2xl mx-auto light-mode:text-black/70">
               Folge meiner kreativen Reise auf Instagram! Ich teile regelmäßig neue Projekte, Behind-the-Scenes und kreative Inspirationen.
             </p>
-            <p className="text-2xl font-medium mt-4 mb-8 light-mode:text-black">@robertspods</p>
+            <p className="text-2xl font-medium mt-4 mb-8 light-mode:text-black">@roberts.pods</p>
           </div>
           
           <InstagramFeed />
-          
-          <div className="text-center mt-12">
-            <a 
-              href="https://instagram.com/robertspods"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-            >
-              Auf Instagram folgen
-            </a>
-          </div>
         </div>
       </section>
       
