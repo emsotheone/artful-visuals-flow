@@ -74,15 +74,15 @@ const Index = () => {
             </p>
           </div>
           
-          {/* Interactive Before/After Slider - Adjusted size to match service section containers */}
-          <div className="max-w-5xl mx-auto">
-            <div className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden">
+          {/* Interactive Before/After Slider - Matched exactly to services section container */}
+          <div className="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
+            <div className="aspect-[16/9] overflow-hidden rounded-xl bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 transition-all duration-300 shadow-md hover:shadow-lg group">
               <BeforeAfter 
                 beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                 afterImage="https://images.unsplash.com/photo-1589220158998-24518fc0b8a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                 beforeLabel="Vorher"
                 afterLabel="Nachher"
-                className="w-full h-full"
+                className="rounded-xl"
               />
             </div>
           </div>
@@ -101,24 +101,24 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="w-full h-[400px] rounded-xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="aspect-[16/9] overflow-hidden rounded-xl bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 transition-all duration-300 shadow-md hover:shadow-lg group">
               <BeforeAfter 
                 beforeImage="https://images.unsplash.com/photo-1520438704522-7acc33a997db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                 afterImage="https://images.unsplash.com/photo-1683139086252-06dca8f742c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                 beforeLabel="Original"
                 afterLabel="Grading"
-                className="w-full h-full"
+                className="rounded-xl"
               />
             </div>
             
-            <div className="w-full h-[400px] rounded-xl overflow-hidden">
+            <div className="aspect-[16/9] overflow-hidden rounded-xl bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 transition-all duration-300 shadow-md hover:shadow-lg group">
               <BeforeAfter 
                 beforeImage="https://images.unsplash.com/photo-1617634733308-fe2a6aa37f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                 afterImage="https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                 beforeLabel="Vor Retusche"
                 afterLabel="Nach Retusche"
-                className="w-full h-full"
+                className="rounded-xl"
               />
             </div>
           </div>

@@ -83,8 +83,8 @@ const BeforeAfter = ({
   return (
     <div 
       ref={containerRef}
-      className={`before-after-container relative rounded-lg overflow-hidden select-none shadow-lg w-full ${className}`}
-      style={{ height }}
+      className={`before-after-container relative overflow-hidden select-none shadow-lg w-full h-full ${className}`}
+      style={{ height: height }}
     >
       {/* "After" image (full width background) */}
       <img 
