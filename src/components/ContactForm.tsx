@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import {
   Form,
@@ -185,9 +186,9 @@ export function ContactForm() {
           * Pflichtfelder
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Durch das Absenden dieses Formulars stimmst du der Verarbeitung deiner Daten gemäß unserer <a href="#" className="underline hover:text-[#FFCC00]">Datenschutzerklärung</a> zu.
+          Durch das Absenden dieses Formulars stimmst du der Verarbeitung deiner Daten gemäß unserer <Link to="/datenschutz" className="underline hover:text-[#FFCC00]">Datenschutzerklärung</Link> zu.
         </p>
       </div>
     </div>
   );
-}
+};
