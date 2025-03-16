@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
@@ -7,19 +7,8 @@ const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const [contentLoaded, setContentLoaded] = useState(false);
 
   useEffect(() => {
-    // Set content as loaded immediately to ensure visibility
-    setContentLoaded(true);
-    
-    // Autoplay video
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Video autoplay error:", error);
-      });
-    }
-
     // Animate title, subtitle and CTA - using direct class manipulation with timeouts
     const title = titleRef.current;
     const subtitle = subtitleRef.current;
@@ -34,6 +23,17 @@ const Hero = () => {
     setTimeout(() => {
       if (cta) cta.classList.add('animate-fade-in');
     }, 1200);
+
+    // Ensure video plays immediately
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("Video autoplay error:", error);
+        // Retry play on user interaction
+        document.addEventListener('click', () => {
+          videoRef.current?.play().catch(e => console.error("Video play error after interaction:", e));
+        }, { once: true });
+      });
+    }
 
     // Parallax effect on scroll
     const handleScroll = () => {
@@ -66,6 +66,7 @@ const Hero = () => {
           muted
           loop
           playsInline
+          autoPlay
           poster="/placeholder.svg"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-a-city-skyline-with-sunset-light-reflections-33989-large.mp4" type="video/mp4" />
@@ -75,10 +76,10 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className={`relative h-full flex flex-col justify-center items-center text-center px-6 ${contentLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+      <div className="relative h-full flex flex-col justify-center items-center text-center px-6 transition-opacity duration-500">
         <h1 
           ref={titleRef} 
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white opacity-0 mb-6 max-w-5xl leading-tight text-shadow-lg"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white opacity-0 mb-6 max-w-5xl leading-tight text-shadow-lg uppercase tracking-wider"
         >
           Visuelle Geschichten mit Cinematic Perfektion
         </h1>
@@ -111,7 +112,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div 
-        className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer ${contentLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 delay-1000`}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer transition-opacity duration-500 delay-1000"
         onClick={scrollToContent}
       >
         <p className="text-white/70 text-sm mb-2 uppercase tracking-widest">Entdecken</p>

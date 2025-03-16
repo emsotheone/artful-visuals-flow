@@ -7,6 +7,7 @@ import BeforeAfter from '../components/BeforeAfter';
 import SocialFeed from '../components/SocialFeed';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
+import ScrollToTop from '../components/ScrollToTop';
 
 const Index = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -42,7 +43,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="font-medium text-white/50 uppercase tracking-widest text-sm">Retusche & Coloring</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
               Die Kunst der Nachbearbeitung
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto">
@@ -84,7 +85,7 @@ const Index = () => {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider">
             Lass uns gemeinsam deine Geschichte erzählen
           </h2>
           <p className="text-white/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
@@ -109,6 +110,7 @@ const Index = () => {
       
       <Footer />
       <CookieConsent />
+      <ScrollToTop />
     </div>
   );
 };

@@ -174,7 +174,7 @@ const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text uppercase tracking-wider">
-            Services
+            SERVICES
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-3">
             Individuelle Medienproduktionen für deine Vision
@@ -260,10 +260,10 @@ const Services = () => {
                     {/* Subtle Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
                     
-                    {/* Minimal Badge with Category and Title - Top Right */}
+                    {/* Minimal Badge with Title Only - Top Right */}
                     <div className="absolute top-6 right-6 p-2 text-right">
-                      <Badge className="mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full">
-                        {service.category} | {service.title}
+                      <Badge className="mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full uppercase">
+                        {service.title}
                       </Badge>
                     </div>
                     
