@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { cn } from '@/lib/utils';
@@ -9,6 +8,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +29,14 @@ const Navbar = () => {
       if (servicesSection) {
         servicesSection.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        const servicesSection = document.getElementById('services');
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -53,17 +61,15 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden md:flex items-center space-x-10">
-              <NavLink 
-                to="/" 
-                onClick={(e) => {
-                  if (window.location.pathname === '/') {
-                    e.preventDefault();
-                    scrollToServices();
-                  }
-                }}
+              <button 
+                onClick={scrollToServices}
+                className={cn(
+                  "text-sm uppercase tracking-widest hover:opacity-70 transition-colors duration-300",
+                  theme === "dark" ? "text-white" : "text-black"
+                )}
               >
                 Services
-              </NavLink>
+              </button>
               <NavLink to="/ueber-mich">Über Mich</NavLink>
               <NavLink to="/kontakt">Kontakt</NavLink>
               
@@ -149,19 +155,19 @@ const Navbar = () => {
           </div>
           
           <div className="flex flex-col space-y-8 p-6 mt-10">
-            <MobileNavLink 
-              to="/" 
-              onClick={(e) => {
+            <button
+              className={cn(
+                "text-2xl font-display tracking-wider flex items-center hover:opacity-70 transition-colors",
+                theme === "dark" ? "text-white" : "text-black"
+              )}
+              onClick={() => {
                 setMobileMenuOpen(false);
-                if (window.location.pathname === '/') {
-                  e.preventDefault();
-                  setTimeout(() => scrollToServices(), 500);
-                }
-              }} 
-              theme={theme}
+                setTimeout(() => scrollToServices(), 300);
+              }}
             >
               Services
-            </MobileNavLink>
+              <ChevronRight size={24} className={theme === "dark" ? "ml-2 opacity-70" : "ml-2 opacity-50"} />
+            </button>
             <MobileNavLink to="/ueber-mich" onClick={toggleMobileMenu} theme={theme}>Über Mich</MobileNavLink>
             <MobileNavLink to="/kontakt" onClick={toggleMobileMenu} theme={theme}>Kontakt</MobileNavLink>
           </div>
