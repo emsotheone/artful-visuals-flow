@@ -75,13 +75,13 @@ const Index = () => {
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
-          : "bg-gradient-to-b from-gray-200 to-gray-100"
+          : "bg-gradient-to-b from-gray-300 to-gray-100"
       }`}>
         <div className="absolute inset-0 z-0">
           <div className={`absolute inset-0 ${
             theme === "dark" 
               ? "bg-gradient-to-b from-black/60 to-background" 
-              : "bg-gradient-to-b from-gray-200/90 to-gray-100"
+              : "bg-gradient-to-b from-gray-300/90 to-gray-100"
           }`}></div>
           <video
             autoPlay
