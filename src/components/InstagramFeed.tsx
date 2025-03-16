@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Instagram, Heart, MessageCircle, ExternalLink } from 'lucide-react';
@@ -80,32 +79,18 @@ const InstagramFeed = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // In a real implementation, you would fetch Instagram data using their API
-    // For this demonstration, we're using a timeout to simulate an API call
-    // and falling back to mock data
-    
     const fetchInstagramPosts = async () => {
       try {
         setLoading(true);
         
-        // Simulating API call - in a real implementation, this would be replaced with an actual fetch
-        // Since Instagram's API requires authentication and can't be directly accessed from client-side,
-        // you would typically implement this using a backend service
-        
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // If we had a real API endpoint, it would look something like this:
-        // const response = await fetch('/api/instagram-feed');
-        // const data = await response.json();
-        // setPosts(data);
-        
-        // For now, we'll use our fallback data
         setPosts(fallbackPosts);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching Instagram posts:', err);
         setError('Failed to load Instagram posts. Please try again later.');
-        setPosts(fallbackPosts); // Use fallback data on error
+        setPosts(fallbackPosts);
         setLoading(false);
       }
     };
@@ -113,7 +98,6 @@ const InstagramFeed = () => {
     fetchInstagramPosts();
   }, []);
 
-  // Loading state
   if (loading) {
     return (
       <div className="w-full flex flex-col items-center justify-center py-10">
@@ -123,7 +107,6 @@ const InstagramFeed = () => {
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="w-full text-center py-8">
@@ -134,7 +117,6 @@ const InstagramFeed = () => {
 
   return (
     <div className="w-full">
-      {/* Instagram handle with icon */}
       <div className="flex items-center justify-center gap-2 mb-12">
         <a 
           href="https://instagram.com/roberts.pods" 
@@ -150,7 +132,6 @@ const InstagramFeed = () => {
         </a>
       </div>
       
-      {/* Instagram Grid - 2x3 for desktop, 2x2 for tablet, 1x6 for mobile */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {posts.slice(0, 6).map((post) => (
           <a 
@@ -188,7 +169,6 @@ const InstagramFeed = () => {
         ))}
       </div>
       
-      {/* CTA Button */}
       <div className="text-center mt-12">
         <Button
           asChild
