@@ -20,7 +20,7 @@ const SocialSeal = () => {
   
   return (
     <div 
-      className={`hidden lg:flex flex-col items-center justify-center w-36 h-36 rounded-full relative transition-all duration-500 ${
+      className={`flex flex-col items-center justify-center w-32 h-32 md:w-36 md:h-36 rounded-full relative transition-all duration-500 ${
         isHovered ? 'scale-105' : 'scale-100'
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -59,7 +59,7 @@ const SocialSeal = () => {
       {/* Inner content */}
       <div className="flex flex-col items-center justify-center space-y-1 z-10 social-seal-rotate">
         <Network 
-          size={28} 
+          size={24} 
           className={`mb-1 transition-colors duration-300 ${
             isHovered
               ? "text-[#FFCC00]"
@@ -117,7 +117,7 @@ const SocialSeal = () => {
                 : "bg-black/60"
           }`}
           style={{
-            transform: `rotate(${i * 60}deg) translateY(-50px)`,
+            transform: `rotate(${i * 60}deg) translateY(-45px)`,
             opacity: isHovered || isAnimating ? 1 : 0.6,
             transitionDelay: `${i * 50}ms`
           }}

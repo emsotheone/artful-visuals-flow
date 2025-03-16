@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, Film, MapPin } from 'lucide-react';
 import SocialMediaPlatformItem from './SocialMediaPlatformItem';
@@ -116,8 +117,8 @@ const SocialFeed = () => {
               Ob vertikale Reels, YouTube Shorts oder kreative TikTok-Videos – ich kenne die Formate und Trends, um deine Zielgruppe optimal zu erreichen und deine Marke eindrucksvoll zu präsentieren.
             </p>
             
-            {/* Add flex container to hold platforms list and seal side by side */}
-            <div className="flex flex-col lg:flex-row">
+            {/* Modified flex container to properly center items */}
+            <div className="flex flex-col lg:flex-row items-center lg:items-center">
               <div className="space-y-4 flex-grow">
                 <SocialMediaPlatformItem 
                   icon={Instagram} 
@@ -144,8 +145,8 @@ const SocialFeed = () => {
                 />
               </div>
               
-              {/* Add the Seal component */}
-              <div className="mt-8 lg:mt-0 flex justify-center">
+              {/* Centered Seal component with proper alignment */}
+              <div className="mt-8 lg:mt-0 flex justify-center items-center lg:ml-8">
                 <SocialSeal />
               </div>
             </div>
