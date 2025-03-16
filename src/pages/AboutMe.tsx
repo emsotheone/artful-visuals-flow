@@ -45,26 +45,26 @@ const AboutMe = () => {
           <div className="text-center mb-16">
             <span className="font-medium text-white/50 uppercase tracking-widest text-sm light-mode:text-black/50">Visual Artist</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase">
-              MOMENTE EINFANGEN, EMOTIONEN WECKEN
+              MOMENTE EINFANGEN, GESCHICHTEN ERZÄHLEN
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto light-mode:text-black/70">
-              Als visueller Künstler aus Frankfurt erschaffe ich cinematic Fotografie und Videoinhalte, die Geschichten erzählen und Emotionen transportieren.
+              Als visueller Künstler aus Frankfurt erschaffe ich cinematic Fotografie und Videoinhalte, die Geschichten lebendig werden lassen.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
             <div className="order-2 md:order-1">
               <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 uppercase">
-                VISUELLE STORYS, DIE EMOTIONEN WECKEN
+                VISUELLE STORYS, DIE BERÜHREN
               </h3>
               <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Meine Leidenschaft ist es, durch die Linse Geschichten zu erzählen, die berühren und inspirieren. Das Zusammenspiel von Licht, Farbe und Bewegung fasziniert mich seit meiner Jugend. Was einst als Hobby begann, entwickelte sich zu einer Leidenschaft und schließlich zu meinem Beruf.
+                Meine Leidenschaft ist es, durch die Linse bedeutungsvolle Momente festzuhalten. Das Zusammenspiel von Licht, Farbe und Bewegung fesselt mich seit meiner Jugend.
               </p>
               <p className="text-white/80 mb-6 light-mode:text-black/80">
-                Mit einem Blick für Details und einer cinematic Bildsprache erschaffe ich visuelle Erlebnisse, die in Erinnerung bleiben. Dabei suche ich stets nach der perfekten Balance zwischen technischer Präzision und künstlerischem Ausdruck. Meine Arbeiten sollen nicht nur ästhetisch ansprechend sein, sondern auch eine emotionale Verbindung zum Betrachter schaffen.
+                Mit einem Blick für Details und einer cineastischen Bildsprache entstehen Werke, die ästhetisch beeindrucken und emotional nachwirken. Ich strebe nach der perfekten Balance aus technischer Präzision und kreativer Freiheit, um Bilder zu schaffen, die im Gedächtnis bleiben.
               </p>
               <p className="text-white/80 mb-8 light-mode:text-black/80">
-                Von kommerziellen Projekten bis hin zu künstlerischen Arbeiten – ich bringe deine Vision mit technischer Perfektion und kreativem Flair zum Leben.
+                Ob kommerzielle Projekte oder künstlerische Visionen – ich bringe deine Ideen mit technischer Perfektion und kreativer Leidenschaft zum Leben.
               </p>
               <div className="flex justify-center md:justify-start">
                 <Button
