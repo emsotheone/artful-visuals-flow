@@ -40,9 +40,9 @@ const SocialFeed = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="font-medium text-white/50 uppercase tracking-widest text-sm">Social Media Content</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4">
-            Visuelles Storytelling für jede Plattform
+          <span className="font-medium text-white/50 uppercase tracking-widest text-sm">SOCIAL MEDIA CONTENT</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
+            VISUELLES STORYTELLING FÜR JEDE PLATTFORM
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto">
             Ich erstelle professionelle Foto- und Videoinhalte, die genau auf die Anforderungen der wichtigsten Social Media Plattformen abgestimmt sind – von Instagram und TikTok bis LinkedIn und YouTube.
@@ -102,8 +102,8 @@ const SocialFeed = () => {
 
           {/* Social Media Text Content */}
           <div className="max-w-lg">
-            <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Maßgeschneiderte Inhalte für jede Plattform
+            <h3 className="text-3xl md:text-4xl font-display font-bold mb-6 uppercase tracking-wider">
+              MAßGESCHNEIDERTE INHALTE FÜR JEDE PLATTFORM
             </h3>
             <p className="text-white/80 mb-8">
               Ob vertikale Reels, YouTube Shorts oder kreative TikTok-Videos – ich kenne die Formate und Trends, um deine Zielgruppe optimal zu erreichen und deine Marke eindrucksvoll zu präsentieren.
