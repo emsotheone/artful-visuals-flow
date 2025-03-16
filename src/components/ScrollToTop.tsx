@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { theme } = useTheme();
+  const { pathname } = useLocation();
 
+  // Effect for scroll to top button visibility
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 500) {
@@ -20,6 +23,14 @@ const ScrollToTop = () => {
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
+
+  // Effect for resetting scroll position on page navigation
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [pathname]);
 
   const scrollToTop = () => {
     window.scrollTo({

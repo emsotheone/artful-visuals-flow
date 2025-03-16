@@ -6,13 +6,20 @@ import { useTheme } from '../context/ThemeContext';
 const Footer = () => {
   const { theme } = useTheme();
   
+  const handleLinkClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
   return (
     <footer className="bg-gradient-to-b from-background via-background/90 to-black py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/" className="inline-block mb-6" onClick={handleLinkClick}>
               <h3 className="text-white font-display text-2xl tracking-wider">ROBERTS PODS</h3>
             </Link>
             <p className={`${theme === 'light' ? 'text-gray-800' : 'text-white/60'} mb-6`}>
@@ -36,32 +43,32 @@ const Footer = () => {
             <h4 className={`${theme === 'light' ? 'text-gray-900' : 'text-white'} text-lg font-medium mb-6`}>Links</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link to="/ueber-mich" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/ueber-mich" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Über Mich
                 </Link>
               </li>
               <li>
-                <Link to="/kontakt" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/kontakt" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Kontakt
                 </Link>
               </li>
               <li>
-                <Link to="/impressum" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/impressum" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Impressum
                 </Link>
               </li>
               <li>
-                <Link to="/datenschutz" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}>
+                <Link to="/datenschutz" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
                   Datenschutz
                 </Link>
               </li>
