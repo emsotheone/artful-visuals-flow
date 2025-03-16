@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -104,9 +103,8 @@ const AboutMe = () => {
               FOLGE MEINER KREATIVEN REISE
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto light-mode:text-black/70">
-              Folge meiner kreativen Reise auf Instagram! Ich teile regelmäßig neue Projekte, Behind-the-Scenes und kreative Inspirationen.
+              Entdecke meine neuesten Projekte, Behind-the-Scenes-Einblicke und kreative Inspirationen.
             </p>
-            <p className="text-2xl font-medium mt-4 mb-8 light-mode:text-black">@roberts.pods</p>
           </div>
           
           <InstagramFeed />
