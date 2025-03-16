@@ -1,10 +1,12 @@
-import { useState, useRef } from 'react';
+
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogClose, DialogTitle } from '@/components/ui/dialog';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
+import { Badge } from '@/components/ui/badge';
 
 interface ServiceFeature {
   id: number;
@@ -28,7 +30,18 @@ const Services = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [contentLoaded, setContentLoaded] = useState(true);
+  const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
   const servicesRef = useRef<HTMLDivElement>(null);
+  const categoryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initialize active slides
+    const initialSlides: Record<number, number> = {};
+    services.forEach(service => {
+      initialSlides[service.id] = 0;
+    });
+    setActiveSlides(initialSlides);
+  }, []);
 
   // Sample services data
   const services: Service[] = [
@@ -149,11 +162,18 @@ const Services = () => {
     setIsDialogOpen(false);
   };
 
+  const handleSlideChange = (serviceId: number, index: number) => {
+    setActiveSlides(prev => ({
+      ...prev,
+      [serviceId]: index
+    }));
+  };
+
   return (
     <section id="services" className="py-20 px-6 md:px-12 relative" ref={servicesRef}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text uppercase tracking-wider">
             Services
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-3">
@@ -164,9 +184,13 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Category Navigation - Simplified with transparent background */}
+        {/* Category Navigation - Improved for mobile */}
         <div className="sticky top-24 z-10 py-4 backdrop-blur-sm mb-12">
-          <div className="flex justify-center space-x-4 overflow-x-auto scrollbar-none pb-2">
+          <div 
+            ref={categoryRef}
+            className="flex justify-start md:justify-center space-x-4 overflow-x-auto scrollbar-none pb-2 relative"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
             {categories.map(category => (
               <motion.button
                 key={category}
@@ -176,6 +200,7 @@ const Services = () => {
                     ? 'bg-[#FFCC00] text-black'
                     : 'bg-white/5 text-white hover:bg-white/10'
                 }`}
+                style={{ scrollSnapAlign: 'center' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -183,12 +208,17 @@ const Services = () => {
               </motion.button>
             ))}
           </div>
+          {/* Mobile scroll indicator */}
+          <div className="md:hidden w-full h-4 pointer-events-none absolute bottom-0 left-0 right-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/80 opacity-40"></div>
+          </div>
         </div>
 
         {/* Full-Width, Clean Visual Services Layout */}
         <div className="space-y-32">
           {filteredServices.map((service, index) => {
-            const isReversed = index % 2 === 1;
+            const activeSlide = activeSlides[service.id] || 0;
+            const hasMultipleMedia = service.media && service.media.length > 1;
             
             return (
               <motion.div
@@ -208,12 +238,12 @@ const Services = () => {
                     whileHover={{ scale: 1.03, filter: "brightness(1.1)" }}
                     transition={{ duration: 0.5 }}
                   >
-                    {/* Autoplay Video or Image */}
+                    {/* Auto-playing Media - Video or Image */}
                     {service.media && service.media.length > 1 ? (
                       <div className="w-full h-full">
                         <img 
-                          src={service.imageUrl} 
-                          alt={service.title} 
+                          src={service.media[activeSlide]} 
+                          alt={`${service.title} - ${activeSlide + 1}`} 
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -227,17 +257,14 @@ const Services = () => {
                       />
                     )}
                     
-                    {/* Minimal Gradient Overlay */}
+                    {/* Subtle Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
                     
-                    {/* Minimal Title Overlay - Top Right */}
+                    {/* Minimal Badge with Category and Title - Top Right */}
                     <div className="absolute top-6 right-6 p-2 text-right">
-                      <span className="inline-block px-3 py-1 mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full">
-                        {service.category}
-                      </span>
-                      <h3 className="text-xl md:text-2xl font-display uppercase tracking-wider text-white/90 font-light">
-                        {service.title}
-                      </h3>
+                      <Badge className="mb-2 text-xs font-medium tracking-wider bg-black/30 backdrop-blur-sm text-white/90 rounded-full">
+                        {service.category} | {service.title}
+                      </Badge>
                     </div>
                     
                     {/* Subtle Play Icon - Center, Only Visible on Hover */}
@@ -251,6 +278,25 @@ const Services = () => {
                     </div>
                   </motion.div>
                 </div>
+                
+                {/* Carousel Indicators - Only if multiple media */}
+                {hasMultipleMedia && (
+                  <div className="flex justify-center mt-4 space-x-2">
+                    {service.media?.map((_, idx) => (
+                      <button 
+                        key={idx}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSlideChange(service.id, idx);
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          activeSlide === idx ? 'bg-[#FFCC00] w-4' : 'bg-white/30'
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </motion.div>
             );
           })}
@@ -274,10 +320,13 @@ const Services = () => {
                   </DialogClose>
                   
                   <div className="p-6 md:p-8">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-2">{selectedService.title}</h2>
-                    <span className="inline-block px-3 py-1 mb-4 text-xs font-medium tracking-wider bg-[#FFCC00]/90 text-black rounded-full">
-                      {selectedService.category}
-                    </span>
+                    <div className="flex items-center gap-2 mb-4">
+                      <Badge className="text-xs font-medium bg-[#FFCC00]/90 text-black rounded-full">
+                        {selectedService.category}
+                      </Badge>
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase tracking-wide">{selectedService.title}</h2>
+                    </div>
+                    
                     <p className="text-white/80 mb-8">{selectedService.description}</p>
                     
                     {selectedService.media && selectedService.media.length > 0 && (
@@ -301,7 +350,7 @@ const Services = () => {
                     )}
                     
                     <div className="space-y-5 mb-8">
-                      <h3 className="text-xl font-semibold mb-4">Das bieten wir dir:</h3>
+                      <h3 className="text-xl font-semibold mb-4 uppercase tracking-wide">Das bieten wir dir:</h3>
                       {selectedService.features.map((feature) => (
                         <div key={feature.id} className="flex items-start space-x-3">
                           <div className="shrink-0 mt-0.5">
