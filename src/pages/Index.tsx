@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -74,17 +73,15 @@ const Index = () => {
             </p>
           </div>
           
-          {/* Interactive Before/After Slider - Perfectly matched to service section containers */}
+          {/* Interactive Before/After Slider - Adjusted size to match service section containers */}
           <div className="max-w-5xl mx-auto">
-            <div className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden">
-              <BeforeAfter 
-                beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                afterImage="https://images.unsplash.com/photo-1589220158998-24518fc0b8a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                beforeLabel="Vorher"
-                afterLabel="Nachher"
-                height="100%"
-              />
-            </div>
+            <BeforeAfter 
+              beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              afterImage="https://images.unsplash.com/photo-1589220158998-24518fc0b8a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              beforeLabel="Vorher"
+              afterLabel="Nachher"
+              height="600px"
+            />
           </div>
         </div>
       </section>
@@ -102,25 +99,21 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="w-full h-[400px] rounded-xl overflow-hidden">
-              <BeforeAfter 
-                beforeImage="https://images.unsplash.com/photo-1520438704522-7acc33a997db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                afterImage="https://images.unsplash.com/photo-1683139086252-06dca8f742c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                beforeLabel="Original"
-                afterLabel="Grading"
-                height="100%"
-              />
-            </div>
+            <BeforeAfter 
+              beforeImage="https://images.unsplash.com/photo-1520438704522-7acc33a997db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              afterImage="https://images.unsplash.com/photo-1683139086252-06dca8f742c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              beforeLabel="Original"
+              afterLabel="Grading"
+              height="400px"
+            />
             
-            <div className="w-full h-[400px] rounded-xl overflow-hidden">
-              <BeforeAfter 
-                beforeImage="https://images.unsplash.com/photo-1617634733308-fe2a6aa37f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                afterImage="https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                beforeLabel="Vor Retusche"
-                afterLabel="Nach Retusche"
-                height="100%"
-              />
-            </div>
+            <BeforeAfter 
+              beforeImage="https://images.unsplash.com/photo-1617634733308-fe2a6aa37f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              afterImage="https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              beforeLabel="Vor Retusche"
+              afterLabel="Nach Retusche"
+              height="400px"
+            />
           </div>
         </div>
       </section>
