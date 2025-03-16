@@ -44,32 +44,32 @@ const Footer = () => {
             <ul className="space-y-4">
               <li>
                 <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Home
+                  HOME
                 </Link>
               </li>
               <li>
                 <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Portfolio
+                  PORTFOLIO
                 </Link>
               </li>
               <li>
                 <Link to="/ueber-mich" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Über Mich
+                  ÜBER MICH
                 </Link>
               </li>
               <li>
                 <Link to="/kontakt" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Kontakt
+                  KONTAKT
                 </Link>
               </li>
               <li>
                 <Link to="/impressum" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Impressum
+                  IMPRESSUM
                 </Link>
               </li>
               <li>
                 <Link to="/datenschutz" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  Datenschutz
+                  DATENSCHUTZ
                 </Link>
               </li>
             </ul>
