@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Instagram, Heart, MessageCircle, ExternalLink } from 'lucide-react';
@@ -117,21 +118,6 @@ const InstagramFeed = () => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-center gap-2 mb-12">
-        <a 
-          href="https://instagram.com/roberts.pods" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center hover:opacity-80 transition-opacity"
-        >
-          <Instagram 
-            size={28} 
-            className={`mr-2 ${theme === 'dark' ? 'text-white' : 'text-black'}`} 
-          />
-          <span className={`text-2xl font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>@roberts.pods</span>
-        </a>
-      </div>
-      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {posts.slice(0, 6).map((post) => (
           <a 
