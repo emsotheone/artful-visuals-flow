@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [showText, setShowText] = useState(true);
+  const [showText, setShowText] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -28,15 +28,9 @@ const Hero = () => {
       });
     }
 
-    // Hide text after 1.5 seconds
-    const textTimer = setTimeout(() => {
-      setShowText(false);
-    }, 1500);
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(textTimer);
     };
   }, []);
 
@@ -66,21 +60,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background"></div>
       </div>
 
-      {/* Hero Content */}
-      <div className={`relative h-full flex flex-col justify-center items-center text-center px-6 transition-opacity duration-500 ${showText ? 'opacity-100' : 'opacity-0'}`}>
-        <h1 
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 max-w-5xl leading-tight text-shadow-lg uppercase tracking-wider"
-        >
-          VISUELLE GESCHICHTEN MIT CINEMATIC PERFEKTION
-        </h1>
-        
-        <p 
-          className="text-xl md:text-2xl text-white/80 max-w-2xl mb-10 text-shadow-sm"
-        >
-          FOTOGRAFIE & VIDEOGRAFIE AUS FRANKFURT, DIE MEHR ALS NUR BILDER ERSCHAFFT
-        </p>
-      </div>
-
       {/* Repositioned CTA Button */}
       <div className="absolute bottom-10 right-10 z-10">
         <a 
@@ -104,3 +83,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
