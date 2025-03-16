@@ -2,15 +2,37 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Instagram } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const { theme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
   
   const handleLinkClick = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+  };
+  
+  const scrollToServices = () => {
+    if (location.pathname === '/') {
+      // If already on home page, scroll to services section
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, navigate to home page and then scroll to services
+      navigate('/');
+      setTimeout(() => {
+        const servicesSection = document.getElementById('services');
+        if (servicesSection) {
+          servicesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
   };
   
   return (
@@ -48,9 +70,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
+                <button 
+                  onClick={scrollToServices}
+                  className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`}
+                >
                   SERVICES
-                </Link>
+                </button>
               </li>
               <li>
                 <Link to="/ueber-mich" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
