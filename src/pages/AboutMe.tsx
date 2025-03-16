@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -6,10 +5,12 @@ import CookieConsent from '../components/CookieConsent';
 import InstagramFeed from '../components/InstagramFeed';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '../context/ThemeContext';
 
 const AboutMe = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -137,9 +138,17 @@ const AboutMe = () => {
         </div>
       </section>
       
-      <section className="py-20 px-6 md:px-12 relative overflow-hidden bg-gradient-to-b from-gray-950 to-background dark:from-gray-950 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]">
+      <section className={`py-20 px-6 md:px-12 relative overflow-hidden ${
+        theme === "dark" 
+          ? "bg-gradient-to-b from-gray-950 to-background" 
+          : "bg-gradient-to-b from-gray-300 to-gray-100"
+      }`}>
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background dark:from-black/60 dark:via-black/40 dark:to-background light-mode:from-[#F1F0FB] light-mode:via-[#F6F6F7] light-mode:to-[#FFFFFF]"></div>
+          <div className={`absolute inset-0 ${
+            theme === "dark" 
+              ? "bg-gradient-to-b from-black/60 via-black/40 to-background" 
+              : "bg-gradient-to-b from-gray-300/90 via-gray-200/60 to-gray-100"
+          }`}></div>
           <video
             autoPlay
             muted
@@ -153,11 +162,11 @@ const AboutMe = () => {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <span className="font-medium text-white/50 uppercase tracking-widest text-sm light-mode:text-gray-600">Equipment</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase text-white light-mode:text-gray-900">
+            <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-gray-600"}`}>Equipment</span>
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
               MEINE WERKZEUGE
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto light-mode:text-gray-700">
+            <p className={`${theme === "dark" ? "text-white/70" : "text-gray-700"} max-w-2xl mx-auto`}>
               Qualität beginnt mit dem richtigen Equipment. Das ist meine Ausrüstung für professionelle Ergebnisse.
             </p>
           </div>

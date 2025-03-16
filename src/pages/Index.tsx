@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -40,7 +39,7 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section - Making sure design is consistent between dark/light mode */}
+      {/* Before/After Section */}
       <section className="py-20 px-6 md:px-12 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -71,7 +70,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section - This is where the different background starts */}
+      {/* CTA Section - Updated to match About page equipment section gradient */}
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
@@ -80,8 +79,8 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <div className={`absolute inset-0 ${
             theme === "dark" 
-              ? "bg-gradient-to-b from-black/60 to-background" 
-              : "bg-gradient-to-b from-gray-300/90 to-gray-100"
+              ? "bg-gradient-to-b from-black/60 via-black/40 to-background" 
+              : "bg-gradient-to-b from-gray-300/90 via-gray-200/60 to-gray-100"
           }`}></div>
           <video
             autoPlay
@@ -98,7 +97,7 @@ const Index = () => {
           <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
             LASS UNS GEMEINSAM DEINE GESCHICHTE ERZÄHLEN
           </h2>
-          <p className={theme === "dark" ? "text-white/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto" : "text-black/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto"}>
+          <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
             Ob für kommerzielle Zwecke oder persönliche Projekte – ich setze deine Ideen mit Leidenschaft und Präzision um.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
