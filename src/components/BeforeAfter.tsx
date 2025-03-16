@@ -8,6 +8,7 @@ interface BeforeAfterProps {
   beforeLabel?: string;
   afterLabel?: string;
   height?: string;
+  className?: string;
 }
 
 const BeforeAfter = ({
@@ -15,7 +16,8 @@ const BeforeAfter = ({
   afterImage,
   beforeLabel = 'Vorher',
   afterLabel = 'Nachher',
-  height = '500px',
+  height = '100%',
+  className = '',
 }: BeforeAfterProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -81,7 +83,7 @@ const BeforeAfter = ({
   return (
     <div 
       ref={containerRef}
-      className="before-after-container relative rounded-lg overflow-hidden select-none shadow-lg"
+      className={`before-after-container relative rounded-lg overflow-hidden select-none shadow-lg w-full ${className}`}
       style={{ height }}
     >
       {/* "After" image (full width background) */}
@@ -115,11 +117,11 @@ const BeforeAfter = ({
           onTouchStart={handleTouchStart}
         >
           <div className="flex items-center justify-center">
-            {/* Fixed: Left arrow now points left */}
+            {/* Left arrow */}
             <span className="transform -translate-x-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-black"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </span>
-            {/* Fixed: Right arrow now points right */}
+            {/* Right arrow */}
             <span className="transform translate-x-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-black"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </span>
