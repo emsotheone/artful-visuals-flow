@@ -151,7 +151,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 px-6 md:px-12 relative">
+    <section id="services" className="py-20 px-6 md:px-12 relative" ref={servicesRef}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text">
@@ -186,10 +186,9 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Artistic Container Layout */}
-        <div className="space-y-24">
+        {/* Full-Width, Alternating Layout */}
+        <div className="space-y-32">
           {filteredServices.map((service, index) => {
-            // Alternate the layout for visual interest
             const isReversed = index % 2 === 1;
             
             return (
@@ -198,80 +197,83 @@ const Services = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: contentLoaded ? 1 : 0, y: contentLoaded ? 0 : 40 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`flex flex-col ${isReversed ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-12`}
+                className="relative"
               >
-                {/* Image Container */}
-                <motion.div 
-                  className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-2xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
+                {/* Full-Width Image Container */}
+                <div 
+                  className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden cursor-pointer group"
                   onClick={() => openServiceDetails(service)}
                 >
-                  <div className="relative aspect-video group cursor-pointer overflow-hidden">
+                  <motion.div 
+                    className="relative w-full h-full"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <img 
                       src={service.imageUrl} 
                       alt={service.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80"></div>
-                    <div className="absolute bottom-0 left-0 p-6 w-full">
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    
+                    {/* Content Overlay - Always Visible */}
+                    <div className={`absolute ${isReversed ? 'left-0' : 'right-0'} bottom-0 p-8 w-full md:w-1/2 transition-all duration-300`}>
                       <span className="inline-block px-3 py-1 mb-3 text-xs font-medium tracking-wider bg-[#FFCC00]/90 text-black rounded-full">
                         {service.category}
                       </span>
-                      <h3 className="text-2xl font-display font-bold text-white mb-2">{service.title}</h3>
-                    </div>
-                    
-                    <motion.div 
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 rounded-full p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <Play className="text-white" size={24} />
-                    </motion.div>
-                  </div>
-                </motion.div>
-                
-                {/* Content Container */}
-                <div className="w-full md:w-1/2 px-4">
-                  <motion.div
-                    initial={{ opacity: 0, x: isReversed ? -20 : 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <h3 className="text-2xl md:text-3xl font-display font-bold mb-3">{service.title}</h3>
-                    <p className="text-white/80 mb-6">{service.shortDescription}</p>
-                    
-                    <div className="space-y-4 mb-8">
-                      {service.features.map((feature) => (
-                        <HoverCard key={feature.id}>
-                          <HoverCardTrigger asChild>
-                            <div className="flex items-start space-x-3 cursor-pointer">
-                              <div className="shrink-0 mt-0.5">
-                                <div className="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
-                                  <ChevronRight size={14} className="text-black" />
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">{service.title}</h3>
+                      <p className="text-white/80 mb-6 transform transition-all duration-300">{service.shortDescription}</p>
+                      
+                      {/* Feature List - Visible on larger screens */}
+                      <div className="hidden md:block space-y-3 mb-6">
+                        {service.features.map((feature) => (
+                          <HoverCard key={feature.id}>
+                            <HoverCardTrigger asChild>
+                              <div className="flex items-start space-x-3 cursor-pointer">
+                                <div className="shrink-0 mt-0.5">
+                                  <div className="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
+                                    <ChevronRight size={14} className="text-black" />
+                                  </div>
                                 </div>
+                                <p className="font-medium text-white/90">{feature.title}</p>
                               </div>
-                              <p className="font-medium">{feature.title}</p>
-                            </div>
-                          </HoverCardTrigger>
-                          <HoverCardContent className="bg-black/95 border-white/20 text-white w-80">
-                            <div className="space-y-2">
-                              <h4 className="font-semibold">{feature.title}</h4>
-                              <p className="text-sm text-white/80">{feature.description}</p>
-                            </div>
-                          </HoverCardContent>
-                        </HoverCard>
-                      ))}
+                            </HoverCardTrigger>
+                            <HoverCardContent className="bg-black/95 border-white/20 text-white w-80">
+                              <div className="space-y-2">
+                                <h4 className="font-semibold">{feature.title}</h4>
+                                <p className="text-sm text-white/80">{feature.description}</p>
+                              </div>
+                            </HoverCardContent>
+                          </HoverCard>
+                        ))}
+                      </div>
+                      
+                      {/* Play Button Overlay - Center of Image */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <motion.div 
+                          className="p-4 rounded-full bg-[#FFCC00]"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          <Play className="text-black" size={24} />
+                        </motion.div>
+                      </div>
+                      
+                      {/* CTA Button */}
+                      <motion.button
+                        className="px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openServiceDetails(service);
+                        }}
+                      >
+                        Jetzt anfragen
+                      </motion.button>
                     </div>
-                    
-                    <motion.button
-                      className="px-6 py-3 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => openServiceDetails(service)}
-                    >
-                      Jetzt anfragen
-                    </motion.button>
                   </motion.div>
                 </div>
               </motion.div>
