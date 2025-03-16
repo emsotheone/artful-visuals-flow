@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, Handshake, Star, HelpCircle } from 'lucide-react';
 import SocialMediaPlatformItem from './SocialMediaPlatformItem';
@@ -47,7 +46,7 @@ const SocialFeed = () => {
             SOCIAL MEDIA CONTENT
           </span>
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-            VISUELLES STORYTELLING FÜR JEDE PLATTFORM
+            STORYTELLING FÜR JEDE PLATTFORM
           </h2>
           <p className={`max-w-2xl mx-auto ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
             Ich erstelle professionelle Foto- und Videoinhalte, die genau auf die Anforderungen der wichtigsten Social Media Plattformen abgestimmt sind – von Instagram und TikTok bis LinkedIn und YouTube.
