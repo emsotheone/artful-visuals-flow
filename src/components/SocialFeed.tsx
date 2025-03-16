@@ -38,7 +38,7 @@ const SocialFeed = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="py-20 px-6 md:px-12 opacity-100 transition-opacity duration-300 social-feed-section"
+      className="py-20 px-6 md:px-12 overflow-hidden opacity-100 transition-opacity duration-300 social-feed-section"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -53,7 +53,7 @@ const SocialFeed = () => {
           </p>
         </div>
         
-        {/* Statistics Section */}
+        {/* Statistics Section - Improved mobile layout */}
         <div 
           ref={statsRef}
           className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16"
@@ -80,32 +80,35 @@ const SocialFeed = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-          {/* iPhone Frame with Social Media Content */}
-          <div 
-            ref={phoneRef}
-            className="relative w-[280px] h-[580px] bg-black rounded-[3rem] border-[8px] border-gray-800 shadow-xl overflow-hidden"
-          >
-            {/* iPhone Notch */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-lg z-10"></div>
-            
-            {/* Video Content */}
-            <div className="w-full h-full overflow-hidden bg-gradient-to-b from-gray-900 to-black">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-turning-in-front-of-a-mirror-41686-medium.mp4" type="video/mp4" />
-                Dein Browser unterstützt dieses Videoformat nicht.
-              </video>
+        {/* Improved content layout for better mobile display */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 w-full">
+          {/* iPhone Frame with Social Media Content - Centered on mobile */}
+          <div className="flex justify-center w-full lg:w-auto">
+            <div 
+              ref={phoneRef}
+              className="relative w-[280px] h-[580px] bg-black rounded-[3rem] border-[8px] border-gray-800 shadow-xl overflow-hidden flex-shrink-0"
+            >
+              {/* iPhone Notch */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-lg z-10"></div>
+              
+              {/* Video Content */}
+              <div className="w-full h-full overflow-hidden bg-gradient-to-b from-gray-900 to-black">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-turning-in-front-of-a-mirror-41686-medium.mp4" type="video/mp4" />
+                  Dein Browser unterstützt dieses Videoformat nicht.
+                </video>
+              </div>
             </div>
           </div>
 
-          {/* Social Media Text Content */}
-          <div className="max-w-lg">
+          {/* Social Media Text Content - Full width on mobile, padding adjusted */}
+          <div className="w-full lg:max-w-lg px-2">
             <h3 className={`text-3xl md:text-4xl font-display font-bold mb-6 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
               MAßGESCHNEIDERTE INHALTE FÜR JEDE PLATTFORM
             </h3>
@@ -139,12 +142,14 @@ const SocialFeed = () => {
               />
             </div>
             
-            <a 
-              href="/kontakt" 
-              className="inline-block mt-8 px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-opacity duration-300 text-sm uppercase tracking-wider font-medium"
-            >
-              Jetzt Social Media Projekt starten
-            </a>
+            <div className="flex justify-center lg:justify-start mt-8">
+              <a 
+                href="/kontakt" 
+                className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-opacity duration-300 text-sm uppercase tracking-wider font-medium"
+              >
+                Jetzt Social Media Projekt starten
+              </a>
+            </div>
           </div>
         </div>
       </div>

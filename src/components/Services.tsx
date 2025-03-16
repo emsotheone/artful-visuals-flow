@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
@@ -8,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { Badge } from '@/components/ui/badge';
 import { useTheme } from '../context/ThemeContext';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface ServiceFeature {
   id: number;
@@ -35,6 +35,7 @@ const Services = () => {
   const servicesRef = useRef<HTMLDivElement>(null);
   const categoryRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const initialSlides: Record<number, number> = {};
@@ -187,14 +188,14 @@ const Services = () => {
         <div className="sticky top-24 z-10 py-4 backdrop-blur-sm mb-12">
           <div 
             ref={categoryRef}
-            className="flex justify-start md:justify-center space-x-4 overflow-x-auto scrollbar-none pb-2 relative"
+            className="flex justify-center space-x-4 overflow-x-auto scrollbar-none pb-4 px-2"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {categories.map(category => (
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap ${
+                className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
                   selectedCategory === category
                     ? 'bg-[#FFCC00] text-black'
                     : theme === 'dark' 
@@ -208,9 +209,6 @@ const Services = () => {
                 {category}
               </motion.button>
             ))}
-          </div>
-          <div className="md:hidden w-full h-4 pointer-events-none absolute bottom-0 left-0 right-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/80 opacity-40"></div>
           </div>
         </div>
 
