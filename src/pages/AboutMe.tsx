@@ -190,29 +190,6 @@ const AboutMe = () => {
         </div>
       </section>
       
-      {/* Combined Call-to-Action with Instagram */}
-      <section className="py-16 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <Button
-            asChild
-            className="px-10 py-7 bg-gradient-to-r from-[#405DE6] via-[#5851DB] to-[#833AB4] text-white hover:opacity-90 rounded-full border-none text-base font-medium uppercase tracking-wider h-auto group transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <a 
-              href="https://instagram.com/roberts.pods" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3"
-            >
-              <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-              <span className="flex items-center">
-                FOLGE MIR AUF INSTAGRAM
-                <span className="ml-2 font-bold">@roberts.pods</span>
-              </span>
-            </a>
-          </Button>
-        </div>
-      </section>
-      
       {showScrollTop && (
         <button 
           onClick={scrollToTop} 
