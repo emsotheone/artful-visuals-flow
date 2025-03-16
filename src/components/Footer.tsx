@@ -49,7 +49,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/" className={`${theme === 'light' ? 'text-gray-700 hover:text-black' : 'text-white/60 hover:text-white'} transition-colors duration-300`} onClick={handleLinkClick}>
-                  PORTFOLIO
+                  SERVICES
                 </Link>
               </li>
               <li>
