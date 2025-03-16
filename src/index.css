@@ -231,6 +231,11 @@
   .light-mode .services-section p {
     @apply text-black/80;
   }
+  
+  /* Yellow button consistency */
+  .cta-button {
+    @apply bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300;
+  }
 }
 
 .image-container {
