@@ -71,7 +71,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section - Updated to match the provided image */}
+      {/* Updated CTA Section with new title, subtitle and single focused CTA */}
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
@@ -96,15 +96,15 @@ const Index = () => {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-            LASS UNS GEMEINSAM DEINE GESCHICHTE ERZÄHLEN
+            DEIN VISUELLES PROJEKT STARTET HIER
           </h2>
           <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
-            Ob für kommerzielle Zwecke oder persönliche Projekte – ich setze deine Ideen mit Leidenschaft und Präzision um.
+            Ob für kommerzielle Kampagnen oder kreative Projekte – ich realisiere deine Vision mit Leidenschaft und Präzision.
           </p>
           <div className="flex justify-center">
             <a 
               href="/kontakt"
-              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
+              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
             >
               JETZT PROJEKT ANFRAGEN
             </a>
