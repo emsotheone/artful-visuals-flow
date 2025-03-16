@@ -155,7 +155,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Roberts Pods. Alle Rechte vorbehalten.
           </p>
           <p className={`${theme === 'light' ? 'text-gray-500' : 'text-white/40'} text-sm`}>
-            Designed and developed by YB-WEB DESIGNS in Frankfurt.
+            Designed and developed by YB-WEB DESIGNS in 069.
           </p>
         </div>
       </div>
