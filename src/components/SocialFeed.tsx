@@ -63,7 +63,7 @@ const SocialFeed = () => {
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0 transition-all duration-300 group-hover:brightness-110">
               <Star size={20} />
             </div>
-            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"} transition-colors duration-300 group-hover:${theme === "dark" ? "text-white/90" : "text-black/90"}`}>Über 40+ zufriedene Kunden</p>
+            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"} transition-colors duration-300 group-hover:${theme === "dark" ? "text-white/90" : "text-black/90"}`}>40+ zufriedene Kunden</p>
           </div>
           
           <div className="stat-item flex items-center space-x-3 group transition-transform duration-300 hover:scale-105">
@@ -77,7 +77,7 @@ const SocialFeed = () => {
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0 transition-all duration-300 group-hover:brightness-110">
               <Rocket size={20} />
             </div>
-            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"} transition-colors duration-300 group-hover:${theme === "dark" ? "text-white/90" : "text-black/90"}`}>Über 50 Millionen Views auf Kundenprojekten</p>
+            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"} transition-colors duration-300 group-hover:${theme === "dark" ? "text-white/90" : "text-black/90"}`}>+50 Millionen Views auf Kundenprojekten</p>
           </div>
         </div>
 
