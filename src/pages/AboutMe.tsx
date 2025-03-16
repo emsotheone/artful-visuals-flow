@@ -1,11 +1,18 @@
 
 import { useEffect, useState, useRef } from 'react';
-import { ArrowDown, Instagram, ExternalLink, Camera } from 'lucide-react';
+import { ArrowDown, Instagram, ExternalLink, Camera, Youtube, Linkedin } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from '@/components/ui/button';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious 
+} from '@/components/ui/carousel';
 
 const AboutMe = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -58,7 +65,7 @@ const AboutMe = () => {
           </p>
           <button
             onClick={scrollToInstagram}
-            className={`px-8 py-4 ${theme === 'dark' ? 'bg-[#FFCC00] text-black' : 'bg-black text-white'} rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium`}
+            className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
           >
             MEHR ÜBER MICH ERFAHREN
           </button>
@@ -127,35 +134,41 @@ const AboutMe = () => {
             </p>
           </div>
           
-          {/* Carousel of Project Images */}
-          <div className="relative overflow-hidden animate-on-scroll">
-            <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-none">
-              <div className="min-w-[280px] md:min-w-[400px] h-[400px] rounded-lg overflow-hidden snap-center">
-                <img src="https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Project 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          {/* Carousel using shadcn ui carousel component */}
+          <div className="animate-on-scroll">
+            <Carousel className="w-full">
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="h-[400px] rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Project 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="h-[400px] rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80" alt="Project 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="h-[400px] rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Project 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <div className="h-[400px] rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1576155935431-26858856a238?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Project 4" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <div className="mt-8 flex justify-center gap-2">
+                <CarouselPrevious className="static transform-none translate-y-0 rounded-full border-white/40 bg-black/20 backdrop-blur-md hover:bg-black/40" />
+                <CarouselNext className="static transform-none translate-y-0 rounded-full border-white/40 bg-black/20 backdrop-blur-md hover:bg-black/40" />
               </div>
-              <div className="min-w-[280px] md:min-w-[400px] h-[400px] rounded-lg overflow-hidden snap-center">
-                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80" alt="Project 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div className="min-w-[280px] md:min-w-[400px] h-[400px] rounded-lg overflow-hidden snap-center">
-                <img src="https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Project 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div className="min-w-[280px] md:min-w-[400px] h-[400px] rounded-lg overflow-hidden snap-center">
-                <img src="https://images.unsplash.com/photo-1576155935431-26858856a238?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Project 4" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-              </div>
-            </div>
-            
-            {/* Scroll indicator for carousel */}
-            <div className="absolute bottom-0 left-0 w-full flex justify-center gap-2 pb-2">
-              <div className="w-16 h-1 bg-white/50 rounded-full"></div>
-              <div className="w-16 h-1 bg-white/20 rounded-full"></div>
-              <div className="w-16 h-1 bg-white/20 rounded-full"></div>
-              <div className="w-16 h-1 bg-white/20 rounded-full"></div>
-            </div>
+            </Carousel>
           </div>
         </div>
       </section>
       
-      {/* Instagram Highlight Section */}
+      {/* Enhanced Instagram Highlight Section */}
       <section 
         ref={instagramRef} 
         className="py-20 px-6 md:px-12"
@@ -171,10 +184,15 @@ const AboutMe = () => {
             <p className={`max-w-2xl mx-auto ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
               Auf Instagram teile ich regelmäßig neue Projekte, Behind-the-Scenes und kreative Inspirationen.
             </p>
-            <p className="flex items-center justify-center mt-4 text-xl">
-              <Instagram size={24} className={`mr-2 ${theme === "dark" ? "text-white" : "text-black"}`} />
-              <span className={`font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>@robertspods</span>
-            </p>
+            <div className="flex flex-col items-center mt-4">
+              <div className="flex items-center justify-center text-xl mb-2">
+                <Instagram size={24} className={`mr-2 ${theme === "dark" ? "text-white" : "text-black"}`} />
+                <span className={`font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>@robertspods</span>
+              </div>
+              <p className={`text-sm ${theme === "dark" ? "text-white/60" : "text-black/60"}`}>
+                Tägliche visuelle Inspiration
+              </p>
+            </div>
           </div>
           
           {/* Instagram Grid */}
@@ -184,24 +202,28 @@ const AboutMe = () => {
               caption="Cinematic Sunset in Frankfurt" 
               hashtags="#frankfurtsunset #cinematicphotography" 
               likes={234}
+              comments={18}
             />
             <InstagramPost 
               imageUrl="https://images.unsplash.com/photo-1553527922-767df645c5f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
               caption="Behind the Scenes" 
               hashtags="#frankfurtphotographer #bts" 
               likes={187}
+              comments={12}
             />
             <InstagramPost 
               imageUrl="https://images.unsplash.com/photo-1634985492257-fd5e796164a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80" 
               caption="Urban Photography Series" 
               hashtags="#frankfurt #urbanphotography" 
               likes={312}
+              comments={27}
             />
             <InstagramPost 
               imageUrl="https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
               caption="Light and Shadows" 
               hashtags="#cinematicphotography #lightandshadow" 
               likes={268}
+              comments={21}
             />
           </div>
           
@@ -210,7 +232,7 @@ const AboutMe = () => {
               href="https://instagram.com/robertspods" 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`group flex items-center px-8 py-4 ${theme === "dark" ? "bg-[#FFCC00] text-black" : "bg-black text-white"} rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium`}
+              className="group flex items-center px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
             >
               Auf Instagram Folgen
               <ExternalLink size={16} className="ml-2 opacity-70 group-hover:opacity-100" />
@@ -266,6 +288,88 @@ const AboutMe = () => {
         </div>
       </section>
       
+      {/* Social Media Platforms Section */}
+      <section className="py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-on-scroll">
+            <span className={`font-medium text-sm uppercase tracking-widest ${theme === "dark" ? "text-white/50" : "text-black/70"}`}>
+              Plattformen
+            </span>
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
+              Folge mir auf Social Media
+            </h2>
+            <p className={`max-w-2xl mx-auto ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+              Entdecke meine verschiedenen Kanäle und bleibe auf dem Laufenden über neue Projekte und kreative Inhalte.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 animate-on-scroll">
+            <a 
+              href="https://instagram.com/robertspods" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`group p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 ${theme === "dark" ? "bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10" : "bg-white/80 hover:bg-white/90 backdrop-blur-sm border border-black/5"}`}
+            >
+              <div className="flex items-center mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${theme === "dark" ? "bg-gradient-to-br from-purple-600 to-orange-500" : "bg-gradient-to-br from-purple-600 to-orange-500"}`}>
+                  <Instagram size={24} className="text-white" />
+                </div>
+                <div className="ml-4">
+                  <h3 className={`text-lg font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>Instagram</h3>
+                  <p className={`text-sm ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>@robertspods</p>
+                </div>
+              </div>
+              <p className={`text-sm mb-3 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Einblicke in meine tägliche Arbeit, Behind-the-Scenes und visuelle Inspiration.</p>
+              <span className={`text-xs flex items-center ${theme === "dark" ? "text-white/50" : "text-black/50"} group-hover:${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                Folgen <ExternalLink size={12} className="ml-1" />
+              </span>
+            </a>
+            
+            <a 
+              href="https://youtube.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`group p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 ${theme === "dark" ? "bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10" : "bg-white/80 hover:bg-white/90 backdrop-blur-sm border border-black/5"}`}
+            >
+              <div className="flex items-center mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-red-600`}>
+                  <Youtube size={24} className="text-white" />
+                </div>
+                <div className="ml-4">
+                  <h3 className={`text-lg font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>YouTube</h3>
+                  <p className={`text-sm ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Robert Spods</p>
+                </div>
+              </div>
+              <p className={`text-sm mb-3 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Cinematic Videos, Tutorials und ausführliche Projekte im Bewegtbild.</p>
+              <span className={`text-xs flex items-center ${theme === "dark" ? "text-white/50" : "text-black/50"} group-hover:${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                Abonnieren <ExternalLink size={12} className="ml-1" />
+              </span>
+            </a>
+            
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`group p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 ${theme === "dark" ? "bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10" : "bg-white/80 hover:bg-white/90 backdrop-blur-sm border border-black/5"}`}
+            >
+              <div className="flex items-center mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center bg-blue-600`}>
+                  <Linkedin size={24} className="text-white" />
+                </div>
+                <div className="ml-4">
+                  <h3 className={`text-lg font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>LinkedIn</h3>
+                  <p className={`text-sm ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Robert Spods</p>
+                </div>
+              </div>
+              <p className={`text-sm mb-3 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Professionelle Updates und Business-Inhalte für die Kreativbranche.</p>
+              <span className={`text-xs flex items-center ${theme === "dark" ? "text-white/50" : "text-black/50"} group-hover:${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                Vernetzen <ExternalLink size={12} className="ml-1" />
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+      
       {/* Footer CTA Section */}
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-3xl mx-auto text-center animate-on-scroll">
@@ -278,7 +382,7 @@ const AboutMe = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href="/kontakt" 
-              className={`px-8 py-4 ${theme === "dark" ? "bg-[#FFCC00] text-black" : "bg-black text-white"} rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium`}
+              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
             >
               Jetzt Projekt anfragen
             </a>
@@ -298,17 +402,19 @@ const AboutMe = () => {
   );
 };
 
-// Instagram Post Component
+// Enhanced Instagram Post Component
 const InstagramPost = ({ 
   imageUrl, 
   caption, 
   hashtags, 
-  likes 
+  likes,
+  comments
 }: { 
   imageUrl: string; 
   caption: string; 
   hashtags: string; 
   likes: number;
+  comments: number;
 }) => {
   const { theme } = useTheme();
   
@@ -323,9 +429,15 @@ const InstagramPost = ({
         />
         
         <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4`}>
-          <div className="flex items-center text-white mb-1">
-            <Camera size={14} className="mr-1" />
-            <span className="text-sm">{likes} Likes</span>
+          <div className="flex items-center justify-between text-white mb-1">
+            <div className="flex items-center">
+              <Camera size={14} className="mr-1" />
+              <span className="text-sm">{likes} Likes</span>
+            </div>
+            <div className="flex items-center">
+              <ExternalLink size={14} className="mr-1" />
+              <span className="text-sm">{comments} Comments</span>
+            </div>
           </div>
           <p className="text-white text-sm font-medium leading-snug">{caption}</p>
           <p className="text-white/70 text-xs mt-1">{hashtags}</p>
