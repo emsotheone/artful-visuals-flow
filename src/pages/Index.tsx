@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Portfolio from '../components/Portfolio';
+import Services from '../components/Services';
 import BeforeAfter from '../components/BeforeAfter';
 import SocialFeed from '../components/SocialFeed';
 import Footer from '../components/Footer';
@@ -34,8 +34,8 @@ const Index = () => {
       {/* Social Media Section moved to top */}
       <SocialFeed />
       
-      {/* Portfolio Section - Now with artistic layout */}
-      <Portfolio />
+      {/* Services Section - Replacing Portfolio */}
+      <Services />
       
       {/* Before/After Section */}
       <section className="py-20 px-6 md:px-12 bg-black">
