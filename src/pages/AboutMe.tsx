@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -39,30 +40,7 @@ const AboutMe = () => {
     <div className={`min-h-screen bg-background text-foreground overflow-x-hidden transition-opacity duration-300 ${contentLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navbar />
       
-      <section className="relative h-[60vh] overflow-hidden">
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <video
-            className="absolute object-cover w-full h-full scale-[1.01]"
-            muted
-            autoPlay
-            loop
-            playsInline
-            poster="/placeholder.svg"
-          >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-32269-large.mp4" type="video/mp4" />
-            Dein Browser unterstützt kein Video.
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background"></div>
-        </div>
-
-        <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 max-w-5xl leading-tight text-shadow-lg uppercase">
-            Über mich
-          </h1>
-        </div>
-      </section>
-      
-      <section className="py-20 px-6 md:px-12">
+      <section className="py-20 px-6 md:px-12 mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="font-medium text-white/50 uppercase tracking-widest text-sm light-mode:text-black/50">Visual Artist</span>
