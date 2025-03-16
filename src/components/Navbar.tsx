@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronRight, Sun, Moon } from 'lucide-react';
@@ -40,6 +41,15 @@ const Navbar = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    scrollToTop();
+  };
+
   return (
     <>
       <nav
@@ -56,6 +66,7 @@ const Navbar = () => {
               className={`font-display text-xl tracking-wider hover:opacity-80 transition-opacity ${
                 theme === "dark" ? "text-white" : "text-black"
               }`}
+              onClick={() => scrollToTop()}
             >
               ROBERTS PODS
             </Link>
@@ -70,8 +81,24 @@ const Navbar = () => {
               >
                 Services
               </button>
-              <NavLink to="/ueber-mich">Über Mich</NavLink>
-              <NavLink to="/kontakt">Kontakt</NavLink>
+              <button 
+                onClick={() => handleNavigation('/ueber-mich')}
+                className={cn(
+                  "text-sm uppercase tracking-widest hover:opacity-70 transition-colors duration-300",
+                  theme === "dark" ? "text-white" : "text-black"
+                )}
+              >
+                Über Mich
+              </button>
+              <button 
+                onClick={() => handleNavigation('/kontakt')}
+                className={cn(
+                  "text-sm uppercase tracking-widest hover:opacity-70 transition-colors duration-300",
+                  theme === "dark" ? "text-white" : "text-black"
+                )}
+              >
+                Kontakt
+              </button>
               
               <button
                 onClick={toggleTheme}
@@ -138,7 +165,10 @@ const Navbar = () => {
                 "font-display text-xl",
                 theme === "dark" ? "text-white" : "text-black"
               )}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                scrollToTop();
+              }}
             >
               ROBERTS PODS
             </Link>
@@ -168,54 +198,37 @@ const Navbar = () => {
               Services
               <ChevronRight size={24} className={theme === "dark" ? "ml-2 opacity-70" : "ml-2 opacity-50"} />
             </button>
-            <MobileNavLink to="/ueber-mich" onClick={toggleMobileMenu} theme={theme}>Über Mich</MobileNavLink>
-            <MobileNavLink to="/kontakt" onClick={toggleMobileMenu} theme={theme}>Kontakt</MobileNavLink>
+            <button
+              className={cn(
+                "text-2xl font-display tracking-wider flex items-center hover:opacity-70 transition-colors",
+                theme === "dark" ? "text-white" : "text-black"
+              )}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleNavigation('/ueber-mich');
+              }}
+            >
+              Über Mich
+              <ChevronRight size={24} className={theme === "dark" ? "ml-2 opacity-70" : "ml-2 opacity-50"} />
+            </button>
+            <button
+              className={cn(
+                "text-2xl font-display tracking-wider flex items-center hover:opacity-70 transition-colors",
+                theme === "dark" ? "text-white" : "text-black"
+              )}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleNavigation('/kontakt');
+              }}
+            >
+              Kontakt
+              <ChevronRight size={24} className={theme === "dark" ? "ml-2 opacity-70" : "ml-2 opacity-50"} />
+            </button>
           </div>
         </div>
       </div>
     </>
   );
 };
-
-const NavLink = ({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
-  const { theme } = useTheme();
-  
-  return (
-    <Link
-      to={to}
-      onClick={onClick}
-      className={cn(
-        "text-sm uppercase tracking-widest hover:opacity-70 transition-colors duration-300",
-        theme === "dark" ? "text-white" : "text-black"
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
-
-const MobileNavLink = ({ 
-  to, 
-  children, 
-  onClick,
-  theme
-}: { 
-  to: string; 
-  children: React.ReactNode;
-  onClick: () => void;
-  theme: "dark" | "light";
-}) => (
-  <Link
-    to={to}
-    className={cn(
-      "text-2xl font-display tracking-wider flex items-center hover:opacity-70 transition-colors",
-      theme === "dark" ? "text-white" : "text-black"
-    )}
-    onClick={onClick}
-  >
-    {children}
-    <ChevronRight size={24} className={theme === "dark" ? "ml-2 opacity-70" : "ml-2 opacity-50"} />
-  </Link>
-);
 
 export default Navbar;
