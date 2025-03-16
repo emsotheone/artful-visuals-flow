@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -60,9 +59,6 @@ const AboutMe = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 max-w-5xl leading-tight text-shadow-lg uppercase">
             Über mich
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mb-10 text-shadow-sm">
-            Der Mensch hinter der Kamera
-          </p>
         </div>
       </section>
       
