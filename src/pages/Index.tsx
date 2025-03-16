@@ -62,33 +62,57 @@ const Index = () => {
           </video>
         </div>
         
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-            DIE KUNST DER NACHBEARBEITUNG
-          </h2>
-          <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
-            Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
-          </p>
-        </div>
-      </section>
-      
-      {/* Before/After Section - Keep below */}
-      <section className="py-20 px-6 md:px-12 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
+              DIE KUNST DER NACHBEARBEITUNG
+            </h2>
+            <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
+              Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
+            </p>
+          </div>
+          
+          {/* Interactive Before/After Slider */}
+          <div className="max-w-5xl mx-auto">
             <BeforeAfter 
               beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
               afterImage="https://images.unsplash.com/photo-1589220158998-24518fc0b8a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               beforeLabel="Vorher"
               afterLabel="Nachher"
+              height="600px"
             />
-            
+          </div>
+        </div>
+      </section>
+      
+      {/* Additional Before/After Section with multiple examples */}
+      <section className="py-20 px-6 md:px-12 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className={`text-2xl md:text-3xl font-display font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>
+              Weitere Beispiele
+            </h3>
+            <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} max-w-2xl mx-auto`}>
+              Vergleiche die Ergebnisse professioneller Nachbearbeitung
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <BeforeAfter 
               beforeImage="https://images.unsplash.com/photo-1520438704522-7acc33a997db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
               afterImage="https://images.unsplash.com/photo-1683139086252-06dca8f742c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
               beforeLabel="Original"
               afterLabel="Grading"
+              height="400px"
+            />
+            
+            <BeforeAfter 
+              beforeImage="https://images.unsplash.com/photo-1617634733308-fe2a6aa37f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              afterImage="https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              beforeLabel="Vor Retusche"
+              afterLabel="Nach Retusche"
+              height="400px"
             />
           </div>
         </div>

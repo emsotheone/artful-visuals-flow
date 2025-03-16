@@ -1,11 +1,13 @@
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface BeforeAfterProps {
   beforeImage: string;
   afterImage: string;
   beforeLabel?: string;
   afterLabel?: string;
+  height?: string;
 }
 
 const BeforeAfter = ({
@@ -13,10 +15,12 @@ const BeforeAfter = ({
   afterImage,
   beforeLabel = 'Vorher',
   afterLabel = 'Nachher',
+  height = '500px',
 }: BeforeAfterProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -77,7 +81,8 @@ const BeforeAfter = ({
   return (
     <div 
       ref={containerRef}
-      className="before-after-container relative rounded-md overflow-hidden h-[500px] select-none"
+      className="before-after-container relative rounded-lg overflow-hidden select-none shadow-lg"
+      style={{ height }}
     >
       {/* "After" image (full width background) */}
       <img 
@@ -88,7 +93,7 @@ const BeforeAfter = ({
       
       {/* "Before" image (controlled by slider) */}
       <div 
-        className="before-after-slider h-full" 
+        className="before-after-slider h-full overflow-hidden"
         style={{ width: `${sliderPosition}%` }}
       >
         <img 
@@ -96,26 +101,42 @@ const BeforeAfter = ({
           alt={beforeLabel} 
           className="absolute inset-0 w-full h-full object-cover"
         />
-        
+      </div>
+      
+      {/* Vertical line with handle */}
+      <div
+        className="absolute top-0 bottom-0 w-0.5 bg-white/80 backdrop-blur-sm z-10"
+        style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+      >
         {/* Slider handle */}
         <div 
-          className="slider-handle"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center cursor-ew-resize z-20 shadow-md border border-white/30"
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
-            <div className="w-4 h-1 bg-black rounded-full"></div>
+          <div className="flex items-center justify-center">
+            <span className="transform -translate-x-1 rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-black"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </span>
+            <span className="transform translate-x-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-black"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
           </div>
         </div>
       </div>
       
       {/* Labels */}
-      <div className="absolute top-4 left-4 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full">
+      <div className="absolute top-5 left-5 px-3 py-1.5 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full font-medium z-10">
         {beforeLabel}
       </div>
       
-      <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full">
+      <div className="absolute top-5 right-5 px-3 py-1.5 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full font-medium z-10">
         {afterLabel}
+      </div>
+      
+      {/* Slide to compare text */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-1.5 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full font-medium z-10">
+        Slide to compare
       </div>
     </div>
   );
