@@ -188,8 +188,7 @@ const Services = () => {
         <div className="sticky top-24 z-10 py-4 backdrop-blur-sm mb-12">
           <div 
             ref={categoryRef}
-            className="flex justify-center space-x-4 overflow-x-auto scrollbar-none pb-4 px-2"
-            style={{ scrollSnapType: 'x mandatory' }}
+            className="flex justify-center flex-wrap gap-2 px-2"
           >
             {categories.map(category => (
               <motion.button
@@ -202,7 +201,6 @@ const Services = () => {
                       ? 'bg-white/5 text-white hover:bg-white/10' 
                       : 'bg-black/5 text-black hover:bg-black/10'
                 }`}
-                style={{ scrollSnapAlign: 'center' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
