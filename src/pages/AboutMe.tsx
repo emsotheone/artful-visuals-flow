@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -46,7 +45,7 @@ const AboutMe = () => {
           <div className="text-center mb-16">
             <span className="font-medium text-white/50 uppercase tracking-widest text-sm light-mode:text-black/50">Visual Artist</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase">
-              MOMENTE EINFANGEN, GESCHICHTEN ERZÄHLEN
+              MOMENTE EINFANGEN, EMOTIONEN WECKEN
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto light-mode:text-black/70">
               Als visueller Künstler aus Frankfurt erschaffe ich cinematic Fotografie und Videoinhalte, die Geschichten lebendig werden lassen.
