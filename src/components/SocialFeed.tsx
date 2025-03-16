@@ -77,7 +77,7 @@ const SocialFeed = () => {
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#FFCC00] text-black flex-shrink-0">
               <MapPin size={20} />
             </div>
-            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>Basierend in Frankfurt, verfügbar weltweit</p>
+            <p className={`font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>Frankfurt, verfügbar weltweit</p>
           </div>
         </div>
 
