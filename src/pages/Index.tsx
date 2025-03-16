@@ -40,7 +40,48 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section */}
+      {/* Updated CTA Section with new title, subtitle and single focused CTA */}
+      <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
+        theme === "dark" 
+          ? "bg-gradient-to-b from-gray-950 to-background" 
+          : "bg-gradient-to-b from-gray-300 to-gray-100"
+      }`}>
+        <div className="absolute inset-0 z-0">
+          <div className={`absolute inset-0 ${
+            theme === "dark" 
+              ? "bg-gradient-to-b from-black/60 via-black/40 to-background" 
+              : "bg-gradient-to-b from-gray-300/90 via-gray-200/60 to-gray-100"
+          }`}></div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-30"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-putting-a-telephone-down-on-a-wooden-table-2906-large.mp4" type="video/mp4" />
+          </video>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
+            DEIN VISUELLES PROJEKT STARTET HIER
+          </h2>
+          <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
+            Ob für kommerzielle Kampagnen oder kreative Projekte – ich realisiere deine Vision mit Leidenschaft und Präzision.
+          </p>
+          <div className="flex justify-center">
+            <a 
+              href="/kontakt"
+              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
+            >
+              JETZT PROJEKT ANFRAGEN
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      {/* Before/After Section - Moved below the CTA section */}
       <section className="py-20 px-6 md:px-12 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
