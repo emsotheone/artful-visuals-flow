@@ -236,6 +236,28 @@
   .cta-button {
     @apply bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300;
   }
+
+  /* Social seal animations */
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .social-seal-pulse {
+    animation: pulse-subtle 3s infinite ease-in-out;
+  }
+  
+  .social-seal-rotate {
+    transition: transform 0.5s ease-out;
+  }
+  
+  .social-seal-rotate:hover {
+    transform: rotate(10deg);
+  }
 }
 
 .image-container {

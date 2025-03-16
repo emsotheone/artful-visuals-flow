@@ -1,7 +1,7 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, Film, MapPin } from 'lucide-react';
 import SocialMediaPlatformItem from './SocialMediaPlatformItem';
+import SocialSeal from './SocialSeal';
 import { useTheme } from '../context/ThemeContext';
 
 const SocialFeed = () => {
@@ -107,39 +107,47 @@ const SocialFeed = () => {
             </div>
           </div>
 
-          {/* Social Media Text Content - Full width on mobile, padding adjusted */}
+          {/* Social Media Text Content with Seal - Full width on mobile, padding adjusted */}
           <div className="w-full lg:max-w-lg px-2">
             <h3 className={`text-3xl md:text-4xl font-display font-bold mb-6 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-              MAßGESCHNEIDERTE INHALTE FÜR JEDE PLATTFORM
+              MASSGESCHNEIDERTE INHALTE FÜR JEDE PLATTFORM
             </h3>
             <p className={theme === "dark" ? "text-white/80 mb-8" : "text-black/80 mb-8"}>
               Ob vertikale Reels, YouTube Shorts oder kreative TikTok-Videos – ich kenne die Formate und Trends, um deine Zielgruppe optimal zu erreichen und deine Marke eindrucksvoll zu präsentieren.
             </p>
             
-            <div className="space-y-4">
-              <SocialMediaPlatformItem 
-                icon={Instagram} 
-                platform="Instagram" 
-                description="Hochwertige Reels & Stories" 
-              />
+            {/* Add flex container to hold platforms list and seal side by side */}
+            <div className="flex flex-col lg:flex-row">
+              <div className="space-y-4 flex-grow">
+                <SocialMediaPlatformItem 
+                  icon={Instagram} 
+                  platform="Instagram" 
+                  description="Hochwertige Reels & Stories" 
+                />
+                
+                <SocialMediaPlatformItem 
+                  icon={MessageCircle} 
+                  platform="TikTok" 
+                  description="Trendgerechte Videoformate" 
+                />
+                
+                <SocialMediaPlatformItem 
+                  icon={Youtube} 
+                  platform="YouTube Shorts" 
+                  description="Schnelle, eindrucksvolle Clips" 
+                />
+                
+                <SocialMediaPlatformItem 
+                  icon={Linkedin} 
+                  platform="LinkedIn" 
+                  description="Professionelle Business-Inhalte" 
+                />
+              </div>
               
-              <SocialMediaPlatformItem 
-                icon={MessageCircle} 
-                platform="TikTok" 
-                description="Trendgerechte Videoformate" 
-              />
-              
-              <SocialMediaPlatformItem 
-                icon={Youtube} 
-                platform="YouTube Shorts" 
-                description="Schnelle, eindrucksvolle Clips" 
-              />
-              
-              <SocialMediaPlatformItem 
-                icon={Linkedin} 
-                platform="LinkedIn" 
-                description="Professionelle Business-Inhalte" 
-              />
+              {/* Add the Seal component */}
+              <div className="mt-8 lg:mt-0 flex justify-center">
+                <SocialSeal />
+              </div>
             </div>
             
             <div className="flex justify-center w-full mt-8">
