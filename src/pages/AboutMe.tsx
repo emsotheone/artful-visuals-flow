@@ -172,9 +172,9 @@ const AboutMe = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
-              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Cameras</h3>
-              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
+            <div className="bg-[#636363] shadow-md border border-white/5 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-[#636363] light-mode:shadow-md light-mode:border light-mode:border-gray-400/20">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-white">Cameras</h3>
+              <ul className="space-y-2 text-white/90 light-mode:text-white/90">
                 <li>Sony Alpha A7S III</li>
                 <li>Canon EOS R5</li>
                 <li>DJI Ronin 4D</li>
@@ -182,9 +182,9 @@ const AboutMe = () => {
               </ul>
             </div>
             
-            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
-              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Objektive</h3>
-              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
+            <div className="bg-[#636363] shadow-md border border-white/5 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-[#636363] light-mode:shadow-md light-mode:border light-mode:border-gray-400/20">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-white">Objektive</h3>
+              <ul className="space-y-2 text-white/90 light-mode:text-white/90">
                 <li>Sony GM 24-70mm f/2.8</li>
                 <li>Canon RF 50mm f/1.2</li>
                 <li>Sigma Art 35mm f/1.4</li>
@@ -192,9 +192,9 @@ const AboutMe = () => {
               </ul>
             </div>
             
-            <div className="bg-black/40 backdrop-blur-sm shadow-md border border-white/10 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-white light-mode:shadow-md light-mode:border light-mode:border-gray-100">
-              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-gray-900">Zubehör</h3>
-              <ul className="space-y-2 text-white/80 light-mode:text-gray-700">
+            <div className="bg-[#636363] shadow-md border border-white/5 rounded-xl p-6 hover-lift transition-all duration-300 light-mode:bg-[#636363] light-mode:shadow-md light-mode:border light-mode:border-gray-400/20">
+              <h3 className="text-xl font-display font-bold mb-4 text-white light-mode:text-white">Zubehör</h3>
+              <ul className="space-y-2 text-white/90 light-mode:text-white/90">
                 <li>DJI RS 3 Pro Gimbal</li>
                 <li>Godox Lichtsystem</li>
                 <li>Rode Wireless Pro</li>
@@ -222,3 +222,4 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+
