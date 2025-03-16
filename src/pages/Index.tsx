@@ -40,12 +40,8 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section - With updated background for improved design */}
-      <section className={`py-20 px-6 md:px-12 ${
-        theme === "dark" 
-          ? "bg-gradient-to-b from-background to-background/95" 
-          : "bg-gradient-to-b from-gray-100 to-gray-200"
-      }`}>
+      {/* Before/After Section - Making sure design is consistent between dark/light mode */}
+      <section className="py-20 px-6 md:px-12 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
@@ -75,7 +71,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section - Updated with gradient background */}
+      {/* CTA Section - This is where the different background starts */}
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
