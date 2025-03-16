@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -81,8 +82,8 @@ const AboutMe = () => {
             <div className="order-1 md:order-2 relative">
               <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-2xl image-shimmer">
                 <img 
-                  src="/lovable-uploads/60f6eb5d-ef3f-46a9-b70d-c37849c143de.png" 
-                  alt="Portrait of a man in black and white photography" 
+                  src="/lovable-uploads/503ce654-0a81-4ea7-8670-d40b8b00546c.png" 
+                  alt="Portrait eines Mannes mit Sonnenbrille im schwarz-weißen Stil" 
                   className="w-full h-full object-cover" 
                 />
               </div>
