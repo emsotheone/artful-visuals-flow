@@ -36,7 +36,9 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <Link 
               to="/" 
-              className="text-white font-display text-xl tracking-wider hover:opacity-80 transition-opacity"
+              className={`font-display text-xl tracking-wider hover:opacity-80 transition-opacity ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
             >
               ROBERTS PODS
             </Link>

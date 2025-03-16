@@ -1,9 +1,10 @@
-
 import { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Only apply parallax effect on scroll
@@ -91,11 +92,11 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer transition-opacity duration-500"
+        className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer transition-opacity duration-500`}
         onClick={scrollToContent}
       >
-        <p className="text-white/70 text-sm mb-2 uppercase tracking-widest">Entdecken</p>
-        <ArrowDown className="text-white/70 animate-bounce" size={24} />
+        <p className={`text-sm mb-2 uppercase tracking-widest ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Entdecken</p>
+        <ArrowDown className={`animate-bounce ${theme === "dark" ? "text-white/70" : "text-black/70"}`} size={24} />
       </div>
     </div>
   );

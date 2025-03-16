@@ -8,9 +8,11 @@ import SocialFeed from '../components/SocialFeed';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import ScrollToTop from '../components/ScrollToTop';
+import { useTheme } from '../context/ThemeContext';
 
 const Index = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Ensure smooth scroll behavior for the entire page
@@ -38,15 +40,15 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section */}
-      <section className="py-20 px-6 md:px-12 bg-black">
+      {/* Before/After Section - Now with gradient background instead of solid black */}
+      <section className={`py-20 px-6 md:px-12 ${theme === "dark" ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-100 to-gray-200"}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="font-medium text-white/50 uppercase tracking-widest text-sm">Retusche & Coloring</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider">
+            <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
               DIE KUNST DER NACHBEARBEITUNG
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className={theme === "dark" ? "text-white/70 max-w-2xl mx-auto" : "text-black/70 max-w-2xl mx-auto"}>
               Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
             </p>
           </div>
@@ -69,10 +71,10 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
-      <section className="py-24 px-6 md:px-12 bg-gradient-to-b from-black to-background relative overflow-hidden">
+      {/* CTA Section - Updated with gradient background */}
+      <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${theme === "dark" ? "bg-gradient-to-b from-gray-900 to-background" : "bg-gradient-to-b from-gray-200 to-gray-100"}`}>
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 to-background"></div>
+          <div className={`absolute inset-0 ${theme === "dark" ? "bg-gradient-to-b from-black/90 to-background" : "bg-gradient-to-b from-gray-200/90 to-gray-100"}`}></div>
           <video
             autoPlay
             muted
@@ -85,10 +87,10 @@ const Index = () => {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider">
+          <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
             LASS UNS GEMEINSAM DEINE GESCHICHTE ERZÄHLEN
           </h2>
-          <p className="text-white/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+          <p className={theme === "dark" ? "text-white/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto" : "text-black/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto"}>
             Ob für kommerzielle Zwecke oder persönliche Projekte – ich setze deine Ideen mit Leidenschaft und Präzision um.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
@@ -100,7 +102,11 @@ const Index = () => {
             </a>
             <a 
               href="/portfolio"
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 text-sm uppercase tracking-wider"
+              className={`px-8 py-4 rounded-full transition-all duration-300 text-sm uppercase tracking-wider ${
+                theme === "dark" 
+                  ? "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20" 
+                  : "bg-black/10 backdrop-blur-sm border border-black/20 text-black hover:bg-black/20"
+              }`}
             >
               Mehr Arbeiten entdecken
             </a>
