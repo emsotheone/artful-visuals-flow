@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, HandShake, Star, HelpCircle } from 'lucide-react';
+import { Instagram, Youtube, Linkedin, MessageCircle, Rocket, Handshake, Star, HelpCircle } from 'lucide-react';
 import SocialMediaPlatformItem from './SocialMediaPlatformItem';
 import SocialSeal from './SocialSeal';
 import { useTheme } from '../context/ThemeContext';
