@@ -34,7 +34,7 @@ const Index = () => {
       {/* Social Media Section moved to top */}
       <SocialFeed />
       
-      {/* Portfolio Section */}
+      {/* Portfolio Section - Now with artistic layout */}
       <Portfolio />
       
       {/* Before/After Section */}
