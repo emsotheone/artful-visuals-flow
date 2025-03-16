@@ -178,7 +178,7 @@ export function ContactForm() {
           className="inline-flex items-center text-foreground hover:text-[#FFCC00] transition-colors duration-300"
         >
           <Instagram className="w-5 h-5 mr-2" />
-          <span>@roberts.pods</span>
+          <span>roberts.pods</span>
         </a>
         
         <p className="mt-8 text-sm text-muted-foreground">
