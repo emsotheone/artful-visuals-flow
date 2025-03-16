@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
@@ -194,7 +195,7 @@ const Services = () => {
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap flex-shrink-0 uppercase ${
                   selectedCategory === category
                     ? 'bg-[#FFCC00] text-black'
                     : theme === 'dark' 
