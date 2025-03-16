@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
@@ -6,6 +7,7 @@ import { Dialog, DialogContent, DialogClose, DialogTitle } from '@/components/ui
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 import { Badge } from '@/components/ui/badge';
+import { useTheme } from '../context/ThemeContext';
 
 interface ServiceFeature {
   id: number;
@@ -32,6 +34,7 @@ const Services = () => {
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
   const servicesRef = useRef<HTMLDivElement>(null);
   const categoryRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const initialSlides: Record<number, number> = {};
@@ -194,7 +197,9 @@ const Services = () => {
                 className={`px-6 py-2 rounded-full text-sm transition-all duration-300 whitespace-nowrap ${
                   selectedCategory === category
                     ? 'bg-[#FFCC00] text-black'
-                    : 'bg-white/5 text-white hover:bg-white/10'
+                    : theme === 'dark' 
+                      ? 'bg-white/5 text-white hover:bg-white/10' 
+                      : 'bg-black/5 text-black hover:bg-black/10'
                 }`}
                 style={{ scrollSnapAlign: 'center' }}
                 whileHover={{ scale: 1.05 }}
@@ -278,7 +283,7 @@ const Services = () => {
                           handleSlideChange(service.id, idx);
                         }}
                         className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          activeSlide === idx ? 'bg-[#FFCC00] w-4' : 'bg-white/30'
+                          activeSlide === idx ? 'bg-[#FFCC00] w-4' : theme === 'dark' ? 'bg-white/30' : 'bg-black/30'
                         }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
@@ -291,7 +296,7 @@ const Services = () => {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="bg-black/95 border-white/10 text-white max-w-4xl p-0 overflow-hidden">
+          <DialogContent className={`${theme === 'dark' ? 'bg-black/95 border-white/10 text-white' : 'bg-white/95 border-black/10 text-black'} max-w-4xl p-0 overflow-hidden`}>
             <DialogTitle className="sr-only">Service Details</DialogTitle>
             <AnimatePresence>
               {selectedService && (
@@ -302,7 +307,7 @@ const Services = () => {
                   transition={{ duration: 0.3 }}
                   className="w-full"
                 >
-                  <DialogClose className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 transition-colors">
+                  <DialogClose className={`absolute top-4 right-4 z-10 rounded-full ${theme === 'dark' ? 'bg-black/50 p-2 text-white hover:bg-black/70' : 'bg-white/50 p-2 text-black hover:bg-white/70'} transition-colors`}>
                     <X size={24} />
                   </DialogClose>
                   
@@ -314,7 +319,7 @@ const Services = () => {
                       <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase tracking-wide">{selectedService.title}</h2>
                     </div>
                     
-                    <p className="text-white/80 mb-8">{selectedService.description}</p>
+                    <p className={`${theme === 'dark' ? 'text-white/80' : 'text-black/80'} mb-8`}>{selectedService.description}</p>
                     
                     {selectedService.media && selectedService.media.length > 0 && (
                       <Carousel className="w-full mb-8">
@@ -331,8 +336,8 @@ const Services = () => {
                             </CarouselItem>
                           ))}
                         </CarouselContent>
-                        <CarouselPrevious className="left-4 bg-black/50 hover:bg-black/70 text-white border-0" />
-                        <CarouselNext className="right-4 bg-black/50 hover:bg-black/70 text-white border-0" />
+                        <CarouselPrevious className={`left-4 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
+                        <CarouselNext className={`right-4 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
                       </Carousel>
                     )}
                     
@@ -347,7 +352,7 @@ const Services = () => {
                           </div>
                           <div>
                             <p className="font-medium">{feature.title}</p>
-                            <p className="text-sm text-white/70 mt-1">{feature.description}</p>
+                            <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'} mt-1`}>{feature.description}</p>
                           </div>
                         </div>
                       ))}

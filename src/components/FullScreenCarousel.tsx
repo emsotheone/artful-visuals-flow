@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface Project {
   id: number;
@@ -20,6 +21,7 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Find the index of the current project
@@ -89,7 +91,7 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
 
   return (
     <div 
-      className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+      className={`fixed inset-0 z-50 ${theme === 'dark' ? 'bg-black' : 'bg-white'} flex items-center justify-center`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -97,7 +99,7 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
       {/* Close button */}
       <button 
         onClick={onClose}
-        className="absolute top-6 right-6 z-20 text-white hover:text-white/70 transition-colors p-2"
+        className={`absolute top-6 right-6 z-20 ${theme === 'dark' ? 'text-white hover:text-white/70' : 'text-black hover:text-black/70'} transition-colors p-2`}
         aria-label="Schließen"
       >
         <X size={32} />
@@ -106,7 +108,11 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
       {/* Left navigation */}
       <button 
         onClick={() => navigateTo('prev')}
-        className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 text-white hover:text-white/70 transition-colors bg-black/30 p-3 rounded-full backdrop-blur-sm"
+        className={`absolute left-6 top-1/2 transform -translate-y-1/2 z-20 ${
+          theme === 'dark' 
+            ? 'text-white hover:text-white/70 bg-black/30' 
+            : 'text-black hover:text-black/70 bg-gray-200/70'
+        } transition-colors p-3 rounded-full backdrop-blur-sm`}
         aria-label="Vorheriges Projekt"
       >
         <ChevronLeft size={32} />
@@ -126,15 +132,19 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
           />
           
           {/* Project info */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8 pb-12">
+          <div className={`absolute bottom-0 left-0 right-0 ${
+            theme === 'dark' 
+              ? 'bg-gradient-to-t from-black/90 to-transparent' 
+              : 'bg-gradient-to-t from-white/90 to-transparent'
+          } p-8 pb-12`}>
             <div className="max-w-4xl mx-auto">
-              <span className="text-white/70 text-sm uppercase tracking-wider">
+              <span className={`${theme === 'dark' ? 'text-white/70' : 'text-black/70'} text-sm uppercase tracking-wider`}>
                 {projects[currentIndex].category}
               </span>
-              <h2 className="text-white text-3xl md:text-4xl font-display mt-2 mb-3">
+              <h2 className={`${theme === 'dark' ? 'text-white' : 'text-black'} text-3xl md:text-4xl font-display mt-2 mb-3`}>
                 {projects[currentIndex].title}
               </h2>
-              <p className="text-white/80 max-w-2xl">
+              <p className={`${theme === 'dark' ? 'text-white/80' : 'text-black/80'} max-w-2xl`}>
                 {projects[currentIndex].description}
               </p>
             </div>
@@ -145,7 +155,11 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
       {/* Right navigation */}
       <button 
         onClick={() => navigateTo('next')}
-        className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 text-white hover:text-white/70 transition-colors bg-black/30 p-3 rounded-full backdrop-blur-sm"
+        className={`absolute right-6 top-1/2 transform -translate-y-1/2 z-20 ${
+          theme === 'dark' 
+            ? 'text-white hover:text-white/70 bg-black/30' 
+            : 'text-black hover:text-black/70 bg-gray-200/70'
+        } transition-colors p-3 rounded-full backdrop-blur-sm`}
         aria-label="Nächstes Projekt"
       >
         <ChevronRight size={32} />
@@ -157,7 +171,9 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
           <button
             key={index}
             className={`w-2 h-2 rounded-full transition-all ${
-              currentIndex === index ? 'bg-white w-6' : 'bg-white/40'
+              currentIndex === index 
+                ? theme === 'dark' ? 'bg-white w-6' : 'bg-black w-6' 
+                : theme === 'dark' ? 'bg-white/40' : 'bg-black/40'
             }`}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Gehe zu Projekt ${index + 1}`}
