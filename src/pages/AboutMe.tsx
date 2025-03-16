@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { ArrowDown, Instagram, ExternalLink, Camera, Youtube, Linkedin } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -23,8 +22,11 @@ const AboutMe = () => {
     // Ensure smooth scroll behavior for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
     
-    // Ensure content is visible on client-side
+    // Force content to be visible, regardless of initial state
     setContentLoaded(true);
+    
+    // Log to verify component is mounting
+    console.log('AboutMe component mounted, content should be visible');
     
     return () => {
       document.documentElement.style.scrollBehavior = '';
