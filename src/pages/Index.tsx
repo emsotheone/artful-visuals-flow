@@ -40,8 +40,58 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section */}
-      <section className="py-20 px-6 md:px-12 bg-background">
+      {/* Equipment Section - Updated with plain background */}
+      <section className="py-20 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Equipment</span>
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
+              MEINE WERKZEUGE
+            </h2>
+            <p className={theme === "dark" ? "text-white/70 max-w-2xl mx-auto" : "text-black/70 max-w-2xl mx-auto"}>
+              Qualität beginnt mit dem richtigen Equipment. Das ist meine Ausrüstung für professionelle Ergebnisse.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Cameras */}
+            <div className={`p-8 rounded-lg ${theme === "dark" ? "bg-black/40" : "bg-gray-100"}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Cameras</h3>
+              <ul className={`space-y-2 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                <li>Sony Alpha A7S III</li>
+                <li>Canon EOS R5</li>
+                <li>DJI Ronin 4D</li>
+                <li>Blackmagic Pocket 6K</li>
+              </ul>
+            </div>
+            
+            {/* Objektive */}
+            <div className={`p-8 rounded-lg ${theme === "dark" ? "bg-black/40" : "bg-gray-100"}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Objektive</h3>
+              <ul className={`space-y-2 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                <li>Sony GM 24-70mm f/2.8</li>
+                <li>Canon RF 50mm f/1.2</li>
+                <li>Sigma Art 35mm f/1.4</li>
+                <li>Sony 85mm f/1.4 GM</li>
+              </ul>
+            </div>
+            
+            {/* Zubehör */}
+            <div className={`p-8 rounded-lg ${theme === "dark" ? "bg-black/40" : "bg-gray-100"}`}>
+              <h3 className={`text-xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-black"}`}>Zubehör</h3>
+              <ul className={`space-y-2 ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>
+                <li>DJI RS 3 Pro Gimbal</li>
+                <li>Godox Lichtsystem</li>
+                <li>Rode Wireless Pro</li>
+                <li>Atomos Ninja V</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Before/After Section with plain background */}
+      <section className="py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
