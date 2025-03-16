@@ -156,7 +156,7 @@ const SocialFeed = () => {
                 href="/kontakt" 
                 className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:opacity-90 transition-opacity duration-300 text-sm uppercase tracking-wider font-medium text-center"
               >
-                Jetzt Social Media Projekt starten
+                JETZT VIRAL GEHEN
               </a>
             </div>
           </div>
