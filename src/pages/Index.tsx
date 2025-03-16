@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -40,7 +39,7 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Updated CTA Section with new title, subtitle and single focused CTA */}
+      {/* Replacing CTA Section with Retusche & Coloring content while keeping the background */}
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
@@ -64,36 +63,19 @@ const Index = () => {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
+          <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
           <h2 className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 leading-tight uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-            DEIN VISUELLES PROJEKT STARTET HIER
+            DIE KUNST DER NACHBEARBEITUNG
           </h2>
           <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
-            Ob für kommerzielle Kampagnen oder kreative Projekte – ich realisiere deine Vision mit Leidenschaft und Präzision.
+            Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
           </p>
-          <div className="flex justify-center">
-            <a 
-              href="/kontakt"
-              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 hover:scale-105 transition-all duration-300 text-sm uppercase tracking-wider font-medium"
-            >
-              JETZT PROJEKT ANFRAGEN
-            </a>
-          </div>
         </div>
       </section>
       
-      {/* Before/After Section - Moved below the CTA section */}
+      {/* Before/After Section - Keep below */}
       <section className="py-20 px-6 md:px-12 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
-            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mt-3 mb-4 uppercase tracking-wider ${theme === "dark" ? "text-white" : "text-black"}`}>
-              DIE KUNST DER NACHBEARBEITUNG
-            </h2>
-            <p className={theme === "dark" ? "text-white/70 max-w-2xl mx-auto" : "text-black/70 max-w-2xl mx-auto"}>
-              Entdecke den Unterschied, den professionelles Color Grading und Retusche ausmachen kann
-            </p>
-          </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <BeforeAfter 
               beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
