@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -70,7 +71,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* CTA Section - Updated to match About page equipment section gradient */}
+      {/* CTA Section - Updated to match the provided image */}
       <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
         theme === "dark" 
           ? "bg-gradient-to-b from-gray-950 to-background" 
@@ -100,18 +101,12 @@ const Index = () => {
           <p className={`${theme === "dark" ? "text-white/70" : "text-black/70"} text-lg md:text-xl mb-10 max-w-2xl mx-auto`}>
             Ob für kommerzielle Zwecke oder persönliche Projekte – ich setze deine Ideen mit Leidenschaft und Präzision um.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex justify-center">
             <a 
               href="/kontakt"
               className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
             >
-              Jetzt Projekt anfragen
-            </a>
-            <a 
-              href="/portfolio"
-              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-            >
-              Mehr Arbeiten entdecken
+              JETZT PROJEKT ANFRAGEN
             </a>
           </div>
         </div>
