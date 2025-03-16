@@ -23,6 +23,15 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const scrollToServices = () => {
+    if (window.location.pathname === '/') {
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <>
       <nav
@@ -44,8 +53,17 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden md:flex items-center space-x-10">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/portfolio">Portfolio</NavLink>
+              <NavLink 
+                to="/" 
+                onClick={(e) => {
+                  if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    scrollToServices();
+                  }
+                }}
+              >
+                Services
+              </NavLink>
               <NavLink to="/ueber-mich">Über Mich</NavLink>
               <NavLink to="/kontakt">Kontakt</NavLink>
               
@@ -131,8 +149,19 @@ const Navbar = () => {
           </div>
           
           <div className="flex flex-col space-y-8 p-6 mt-10">
-            <MobileNavLink to="/" onClick={toggleMobileMenu} theme={theme}>Home</MobileNavLink>
-            <MobileNavLink to="/portfolio" onClick={toggleMobileMenu} theme={theme}>Portfolio</MobileNavLink>
+            <MobileNavLink 
+              to="/" 
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  setTimeout(() => scrollToServices(), 500);
+                }
+              }} 
+              theme={theme}
+            >
+              Services
+            </MobileNavLink>
             <MobileNavLink to="/ueber-mich" onClick={toggleMobileMenu} theme={theme}>Über Mich</MobileNavLink>
             <MobileNavLink to="/kontakt" onClick={toggleMobileMenu} theme={theme}>Kontakt</MobileNavLink>
           </div>
@@ -142,12 +171,13 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
+const NavLink = ({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   const { theme } = useTheme();
   
   return (
     <Link
       to={to}
+      onClick={onClick}
       className={cn(
         "text-sm uppercase tracking-widest hover:opacity-70 transition-colors duration-300",
         theme === "dark" ? "text-white" : "text-black"
