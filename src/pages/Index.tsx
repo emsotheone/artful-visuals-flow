@@ -73,7 +73,7 @@ const Index = () => {
             </p>
           </div>
           
-          {/* Interactive Before/After Slider */}
+          {/* Interactive Before/After Slider - Adjusted size to match service section containers */}
           <div className="max-w-5xl mx-auto">
             <BeforeAfter 
               beforeImage="https://images.unsplash.com/photo-1581288695521-b63aa03fcc95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
