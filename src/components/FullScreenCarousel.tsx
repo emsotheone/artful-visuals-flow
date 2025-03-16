@@ -91,7 +91,7 @@ const FullScreenCarousel = ({ currentProject, projects, onClose }: FullScreenCar
 
   return (
     <div 
-      className={`fixed inset-0 z-50 ${theme === 'dark' ? 'bg-black' : 'bg-white'} flex items-center justify-center`}
+      className={`fixed inset-0 z-50 ${theme === 'dark' ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-white'} flex items-center justify-center`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

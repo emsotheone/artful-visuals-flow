@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -77,13 +78,13 @@ const Hero = () => {
         >
           <a 
             href="/portfolio"
-            className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 text-sm uppercase tracking-wider"
+            className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
           >
             Portfolio entdecken
           </a>
           <a 
             href="/kontakt"
-            className="px-8 py-4 bg-white text-black rounded-full hover:bg-white/90 transition-all duration-300 text-sm uppercase tracking-wider"
+            className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
           >
             Projekt anfragen
           </a>
@@ -95,8 +96,8 @@ const Hero = () => {
         className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer transition-opacity duration-500`}
         onClick={scrollToContent}
       >
-        <p className={`text-sm mb-2 uppercase tracking-widest ${theme === "dark" ? "text-white/70" : "text-black/70"}`}>Entdecken</p>
-        <ArrowDown className={`animate-bounce ${theme === "dark" ? "text-white/70" : "text-black/70"}`} size={24} />
+        <p className={`text-sm mb-2 uppercase tracking-widest ${theme === "dark" ? "text-white/70" : "text-black"}`}>Entdecken</p>
+        <ArrowDown className={`animate-bounce ${theme === "dark" ? "text-white/70" : "text-black"}`} size={24} />
       </div>
     </div>
   );

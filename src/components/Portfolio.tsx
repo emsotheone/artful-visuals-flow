@@ -183,8 +183,8 @@ const Portfolio = () => {
                     <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">{project.title}</h3>
                     <p className="text-white/80 text-sm md:text-base line-clamp-2 mb-4">{project.description}</p>
                     <motion.button
-                      className="inline-flex items-center px-4 py-2 border border-white/30 text-white text-sm rounded-full hover:bg-white/10 transition-colors"
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 204, 0, 0.2)' }}
+                      className="inline-flex items-center px-4 py-2 bg-[#FFCC00] text-black text-sm rounded-full hover:bg-[#FFCC00]/90 transition-colors"
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Play size={16} className="mr-2" /> Details ansehen
@@ -247,7 +247,7 @@ const Portfolio = () => {
                         <a href="/kontakt">Jetzt Projekt anfragen</a>
                       </Button>
                       <Button 
-                        className="px-8 py-6 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full text-sm uppercase tracking-wider"
+                        className="px-8 py-6 bg-[#FFCC00] text-black hover:bg-[#FFCC00]/90 rounded-full text-sm uppercase tracking-wider"
                         onClick={closeProjectDetails}
                       >
                         Zurück zum Portfolio

@@ -40,8 +40,12 @@ const Index = () => {
       {/* Services Section - Replacing Portfolio */}
       <Services />
       
-      {/* Before/After Section - Now with gradient background instead of solid black */}
-      <section className={`py-20 px-6 md:px-12 ${theme === "dark" ? "bg-gradient-to-b from-black to-gray-900" : "bg-gradient-to-b from-gray-100 to-gray-200"}`}>
+      {/* Before/After Section - With varied gradient background for improved design */}
+      <section className={`py-20 px-6 md:px-12 ${
+        theme === "dark" 
+          ? "bg-gradient-to-b from-gray-900/80 to-gray-950" 
+          : "bg-gradient-to-b from-gray-100 to-gray-200"
+      }`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className={`font-medium uppercase tracking-widest text-sm ${theme === "dark" ? "text-white/50" : "text-black/60"}`}>Retusche & Coloring</span>
@@ -72,9 +76,17 @@ const Index = () => {
       </section>
       
       {/* CTA Section - Updated with gradient background */}
-      <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${theme === "dark" ? "bg-gradient-to-b from-gray-900 to-background" : "bg-gradient-to-b from-gray-200 to-gray-100"}`}>
+      <section className={`py-24 px-6 md:px-12 relative overflow-hidden ${
+        theme === "dark" 
+          ? "bg-gradient-to-b from-gray-950 to-background" 
+          : "bg-gradient-to-b from-gray-200 to-gray-100"
+      }`}>
         <div className="absolute inset-0 z-0">
-          <div className={`absolute inset-0 ${theme === "dark" ? "bg-gradient-to-b from-black/90 to-background" : "bg-gradient-to-b from-gray-200/90 to-gray-100"}`}></div>
+          <div className={`absolute inset-0 ${
+            theme === "dark" 
+              ? "bg-gradient-to-b from-black/60 to-background" 
+              : "bg-gradient-to-b from-gray-200/90 to-gray-100"
+          }`}></div>
           <video
             autoPlay
             muted
@@ -96,17 +108,13 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a 
               href="/kontakt"
-              className="px-8 py-4 bg-white text-black rounded-full hover:bg-white/90 transition-all duration-300 text-sm uppercase tracking-wider"
+              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
             >
               Jetzt Projekt anfragen
             </a>
             <a 
               href="/portfolio"
-              className={`px-8 py-4 rounded-full transition-all duration-300 text-sm uppercase tracking-wider ${
-                theme === "dark" 
-                  ? "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20" 
-                  : "bg-black/10 backdrop-blur-sm border border-black/20 text-black hover:bg-black/20"
-              }`}
+              className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
             >
               Mehr Arbeiten entdecken
             </a>
