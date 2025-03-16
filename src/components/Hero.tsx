@@ -1,10 +1,11 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [showText, setShowText] = useState(true);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -27,9 +28,15 @@ const Hero = () => {
       });
     }
 
+    // Hide text after 1.5 seconds
+    const textTimer = setTimeout(() => {
+      setShowText(false);
+    }, 1500);
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(textTimer);
     };
   }, []);
 
@@ -60,7 +67,7 @@ const Hero = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
+      <div className={`relative h-full flex flex-col justify-center items-center text-center px-6 transition-opacity duration-500 ${showText ? 'opacity-100' : 'opacity-0'}`}>
         <h1 
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 max-w-5xl leading-tight text-shadow-lg uppercase tracking-wider"
         >
@@ -72,23 +79,16 @@ const Hero = () => {
         >
           FOTOGRAFIE & VIDEOGRAFIE AUS FRANKFURT, DIE MEHR ALS NUR BILDER ERSCHAFFT
         </p>
-        
-        <div 
-          className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6"
+      </div>
+
+      {/* Repositioned CTA Button */}
+      <div className="absolute bottom-10 right-10 z-10">
+        <a 
+          href="/kontakt"
+          className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
         >
-          <a 
-            href="/portfolio"
-            className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-          >
-            Portfolio entdecken
-          </a>
-          <a 
-            href="/kontakt"
-            className="px-8 py-4 bg-[#FFCC00] text-black rounded-full hover:bg-[#FFCC00]/90 transition-all duration-300 text-sm uppercase tracking-wider"
-          >
-            Projekt anfragen
-          </a>
-        </div>
+          Projekt anfragen
+        </a>
       </div>
 
       {/* Scroll Indicator */}
