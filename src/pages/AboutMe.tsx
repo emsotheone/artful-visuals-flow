@@ -1,9 +1,10 @@
+
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import InstagramFeed from '../components/InstagramFeed';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '../context/ThemeContext';
 
@@ -105,6 +106,17 @@ const AboutMe = () => {
             <p className="text-white/70 max-w-2xl mx-auto light-mode:text-black/70">
               Entdecke meine neuesten Projekte, Behind-the-Scenes-Einblicke und kreative Inspirationen.
             </p>
+            <div className="mt-6">
+              <a 
+                href="https://instagram.com/roberts.pods" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-foreground hover:text-[#FFCC00] transition-colors duration-300 hover:scale-105 transform"
+              >
+                <Instagram className="w-5 h-5 mr-2" />
+                <span>roberts.pods</span>
+              </a>
+            </div>
           </div>
           
           <InstagramFeed />

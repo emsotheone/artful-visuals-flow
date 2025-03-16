@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone, Instagram, Youtube } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -20,13 +19,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/roberts.pods" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`w-10 h-10 rounded-full ${theme === 'light' ? 'bg-gray-200 hover:bg-gray-300' : 'bg-white/10 hover:bg-white/20'} flex items-center justify-center transition-colors duration-300`}
+                className={`w-10 h-10 rounded-full ${theme === 'light' ? 'bg-gray-200 hover:bg-[#FFCC00]' : 'bg-white/10 hover:bg-[#FFCC00]'} flex items-center justify-center transition-all duration-300 hover:scale-105 transform`}
                 aria-label="Instagram"
               >
-                <Instagram size={18} className={theme === 'light' ? 'text-black' : 'text-white'} />
+                <Instagram size={18} className={`${theme === 'light' ? 'text-black' : 'text-white'} group-hover:text-black transition-colors duration-300`} />
               </a>
               <a 
                 href="https://youtube.com" 
