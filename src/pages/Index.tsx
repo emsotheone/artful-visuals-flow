@@ -37,7 +37,7 @@ const Index = () => {
       {/* Social Media Section */}
       <SocialFeed />
       
-      {/* Services Section with iPad scroll animation */}
+      {/* Services Section with new container scroll animation */}
       <Services />
       
       {/* Replacing CTA Section with Retusche & Coloring content while keeping the background */}

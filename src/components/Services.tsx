@@ -8,7 +8,7 @@ import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/h
 import { Badge } from '@/components/ui/badge';
 import { useTheme } from '../context/ThemeContext';
 import { useIsMobile } from '../hooks/use-mobile';
-import { ContainerScroll } from './ui/container-scroll';
+import { ContainerScroll } from './ui/container-scroll-animation';
 
 interface ServiceFeature {
   id: number;
@@ -171,55 +171,9 @@ const Services = () => {
     }));
   };
 
-  // Create scroll animation service items
-  const scrollItems = categories.map((category, index) => {
-    const servicesForCategory = services.filter(service => service.category === category);
-    
-    return {
-      id: index + 1,
-      title: `${category} Services`,
-      category: category,
-      content: (
-        <div className="flex flex-col items-center">
-          <div className="grid grid-cols-1 gap-6 w-full">
-            {servicesForCategory.map(service => (
-              <motion.div
-                key={service.id}
-                className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
-                onClick={() => openServiceDetails(service)}
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
-                    <img 
-                      src={service.imageUrl} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                      {service.title}
-                    </h3>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'}`}>
-                      {service.shortDescription}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      )
-    };
-  });
-
-  // Use the classic UI for mobile, scroll animation for desktop
   return (
     <section id="services" className="relative py-20" ref={servicesRef}>
       {isMobile ? (
-        // Original service UI for mobile
         <div className="px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -353,7 +307,6 @@ const Services = () => {
           </div>
         </div>
       ) : (
-        // Scroll-based iPad animation for desktop
         <ContainerScroll
           titleComponent={
             <div className="text-center">
@@ -368,8 +321,37 @@ const Services = () => {
               </p>
             </div>
           }
-          items={scrollItems}
-        />
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 h-full overflow-auto">
+            {services.map((service) => (
+              <motion.div
+                key={service.id}
+                className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
+                onClick={() => openServiceDetails(service)}
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
+                    <img 
+                      src={service.imageUrl} 
+                      alt={service.title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                      {service.title}
+                    </h3>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'}`}>
+                      {service.shortDescription}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </ContainerScroll>
       )}
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
