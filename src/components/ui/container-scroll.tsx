@@ -148,8 +148,8 @@ export function ContainerScroll({
             }}
             className="w-full max-w-5xl aspect-[4/3] bg-gradient-to-br from-gray-900 to-gray-800 rounded-[40px] border-[12px] border-gray-700 overflow-hidden shadow-2xl flex items-center justify-center"
           >
-            {/* Inner iPad Screen */}
-            <div className="relative w-full h-full bg-background overflow-hidden">
+            {/* Inner iPad Screen - Making the background darker */}
+            <div className="relative w-full h-full bg-black overflow-hidden">
               {/* Service Items */}
               <div className="absolute inset-0 flex items-center justify-center">
                 {items.map((item, idx) => (
@@ -170,12 +170,12 @@ export function ContainerScroll({
                       <span className={`inline-block px-4 py-1 rounded-full ${
                         theme === "dark" 
                           ? "bg-white/10 text-white/90" 
-                          : "bg-black/10 text-black/90"
+                          : "bg-white/20 text-white/90"
                       } text-sm font-medium mb-4`}>
                         {item.category}
                       </span>
                       <h2 className={`text-3xl md:text-4xl font-bold mb-2 ${
-                        theme === "dark" ? "text-white" : "text-black"
+                        theme === "dark" ? "text-white" : "text-white"
                       }`}>
                         {item.title}
                       </h2>
@@ -197,7 +197,7 @@ export function ContainerScroll({
                         ? 'bg-[#FFCC00] w-8' 
                         : theme === 'dark' 
                           ? 'bg-white/30' 
-                          : 'bg-black/30'
+                          : 'bg-white/30'
                     }`}
                   />
                 ))}
