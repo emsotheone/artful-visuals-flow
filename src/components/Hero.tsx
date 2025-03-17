@@ -61,32 +61,30 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background"></div>
       </div>
 
-      {/* Infinite Slider - positioned above the scroll indicator */}
-      <div className="absolute bottom-32 left-0 right-0 z-10">
-        <div className="max-w-5xl mx-auto px-4">
-          <InfiniteSlider 
-            gap={32} 
-            duration={30} 
-            durationOnHover={60} 
-            className="py-4 mb-4"
-          >
-            <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
-              <span className="text-[#FFCC00] mr-3">★</span> 40+ zufriedene Kunden
-            </div>
-            <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
-              <span className="text-[#FFCC00] mr-3">★</span> Individuelle Beratung
-            </div>
-            <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
-              <span className="text-[#FFCC00] mr-3">★</span> 50+ Mio. Views auf Kundenprojekten
-            </div>
-            <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
-              <span className="text-[#FFCC00] mr-3">★</span> Professionelle Nachbearbeitung
-            </div>
-            <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
-              <span className="text-[#FFCC00] mr-3">★</span> Langjährige Erfahrung
-            </div>
-          </InfiniteSlider>
-        </div>
+      {/* Infinite Slider - positioned above the scroll indicator, now full width */}
+      <div className="absolute bottom-32 left-0 right-0 z-10 w-full">
+        <InfiniteSlider 
+          gap={32} 
+          duration={30} 
+          durationOnHover={60} 
+          className="py-4 mb-4 w-full"
+        >
+          <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
+            <span className="text-[#FFCC00] mr-3">★</span> 40+ zufriedene Kunden
+          </div>
+          <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
+            <span className="text-[#FFCC00] mr-3">★</span> Individuelle Beratung
+          </div>
+          <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
+            <span className="text-[#FFCC00] mr-3">★</span> 50+ Mio. Views auf Kundenprojekten
+          </div>
+          <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
+            <span className="text-[#FFCC00] mr-3">★</span> Professionelle Nachbearbeitung
+          </div>
+          <div className={`px-4 py-2 ${theme === "dark" ? "text-white/80" : "text-black/80"} flex items-center whitespace-nowrap text-lg font-medium`}>
+            <span className="text-[#FFCC00] mr-3">★</span> Langjährige Erfahrung
+          </div>
+        </InfiniteSlider>
       </div>
 
       {/* Repositioned CTA Button */}
