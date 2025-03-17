@@ -123,25 +123,29 @@ const SocialFeed = () => {
                 <SocialMediaPlatformItem 
                   icon={Instagram} 
                   platform="Instagram" 
-                  description="Hochwertige Reels & Stories" 
+                  description="Hochwertige Reels & Stories"
+                  stats="1.2 Mrd. monatlich aktive Nutzer weltweit. Ideal für visuelle Markenkommunikation und Storytelling."
                 />
                 
                 <SocialMediaPlatformItem 
                   icon={MessageCircle} 
                   platform="TikTok" 
-                  description="Trendgerechte Videoformate" 
+                  description="Trendgerechte Videoformate"
+                  stats="Über 1 Mrd. monatlich aktive Nutzer. Perfekt für kurze, authentische Videos mit hoher Reichweite."
                 />
                 
                 <SocialMediaPlatformItem 
                   icon={Youtube} 
                   platform="YouTube Shorts" 
-                  description="Schnelle, eindrucksvolle Clips" 
+                  description="Schnelle, eindrucksvolle Clips"
+                  stats="2+ Mrd. monatlich aktive Nutzer. Ideal für kurze Clips mit hoher Sichtbarkeit und Entdeckungspotential."
                 />
                 
                 <SocialMediaPlatformItem 
                   icon={Linkedin} 
                   platform="LinkedIn" 
-                  description="Professionelle Business-Inhalte" 
+                  description="Professionelle Business-Inhalte"
+                  stats="930+ Mio. registrierte Nutzer. Optimal für B2B-Kommunikation und professionelles Networking."
                 />
               </div>
               
