@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronRight, X } from 'lucide-react';
@@ -9,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { useTheme } from '../context/ThemeContext';
 import { useIsMobile } from '../hooks/use-mobile';
 import { ContainerScroll } from './ui/container-scroll-animation';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 interface ServiceFeature {
   id: number;
@@ -29,10 +31,9 @@ interface Service {
 
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Commercial');
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [contentLoaded, setContentLoaded] = useState(true);
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [contentLoaded, setContentLoaded] = useState(true);
   const servicesRef = useRef<HTMLDivElement>(null);
   const categoryRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
@@ -155,20 +156,133 @@ const Services = () => {
 
   const filteredServices = services.filter(service => service.category === selectedCategory);
 
-  const openServiceDetails = (service: Service) => {
-    setSelectedService(service);
-    setIsDialogOpen(true);
-  };
-
-  const closeServiceDetails = () => {
-    setIsDialogOpen(false);
-  };
-
   const handleSlideChange = (serviceId: number, index: number) => {
     setActiveSlides(prev => ({
       ...prev,
       [serviceId]: index
     }));
+  };
+
+  const ServiceDetail = ({ service }: { service: Service }) => {
+    return (
+      <div className="p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Badge className="text-xs font-medium bg-[#FFCC00]/90 text-black rounded-full">
+            {service.category}
+          </Badge>
+          <h3 className={`text-2xl font-bold uppercase ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+            {service.title}
+          </h3>
+        </div>
+        
+        <p className={`${theme === 'dark' ? 'text-white/80' : 'text-black/80'} mb-6`}>
+          {service.description}
+        </p>
+        
+        <div className="space-y-4 mb-6">
+          <h4 className="text-lg font-semibold uppercase tracking-wide">Das bieten wir dir:</h4>
+          {service.features.map((feature) => (
+            <div key={feature.id} className="flex items-start space-x-3">
+              <div className="shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
+                  <ChevronRight size={14} className="text-black" />
+                </div>
+              </div>
+              <div>
+                <p className="font-medium">{feature.title}</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'} mt-1`}>
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {service.media && service.media.length > 0 && (
+          <div className="mb-6">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {service.media.map((src, idx) => (
+                  <CarouselItem key={idx}>
+                    <div className="h-32 md:h-48 w-full overflow-hidden rounded-md">
+                      <img 
+                        src={src} 
+                        alt={`${service.title} - Bild ${idx + 1}`} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className={`left-2 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
+              <CarouselNext className={`right-2 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
+            </Carousel>
+          </div>
+        )}
+        
+        <div className="text-center mt-4">
+          <Button 
+            className="px-6 py-2 bg-[#FFCC00] text-black hover:bg-[#FFCC00]/90 rounded-full text-sm uppercase tracking-wider"
+            asChild
+          >
+            <a href="/kontakt">Jetzt Projekt starten</a>
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
+  const ServiceCard = ({ service, onClick }: { service: Service, onClick: () => void }) => {
+    return (
+      <motion.div 
+        className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-black/5 hover:bg-black/10'} backdrop-blur-sm transition-all duration-300 cursor-pointer`}
+        onClick={onClick}
+        whileHover={{ y: -5 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
+            <img 
+              src={service.imageUrl} 
+              alt={service.title} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h3 className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+              {service.title}
+            </h3>
+            <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'}`}>
+              {service.shortDescription}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  const CategoryList = () => {
+    return (
+      <div className="grid grid-cols-2 gap-4 p-4">
+        {categories.map((category) => (
+          <motion.button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`p-4 rounded-xl text-center transition-all duration-300 flex flex-col items-center justify-center ${
+              selectedCategory === category
+                ? 'bg-[#FFCC00] text-black'
+                : theme === 'dark' 
+                  ? 'bg-white/5 text-white hover:bg-white/10' 
+                  : 'bg-black/5 text-black hover:bg-black/10'
+            }`}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span className="text-lg font-bold uppercase">{category}</span>
+          </motion.button>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -180,9 +294,6 @@ const Services = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text uppercase tracking-wider">
                 SERVICES
               </h2>
-              <p className="text-white/70 dark:text-white/70 light-mode:text-black/70 max-w-2xl mx-auto mb-3 uppercase tracking-wide">
-                INDIVIDUELLE MEDIENPRODUKTIONEN FÜR DEINE VISION
-              </p>
               <p className="text-white/60 dark:text-white/60 light-mode:text-black/60 max-w-2xl mx-auto">
                 Von kreativen Werbeproduktionen bis hin zu einzigartigen Event-Coverages – entdecke meine Services, die Geschichten lebendig machen.
               </p>
@@ -228,7 +339,7 @@ const Services = () => {
                   >
                     <div 
                       className="w-full h-[500px] md:h-[600px] rounded-xl overflow-hidden cursor-pointer group"
-                      onClick={() => openServiceDetails(service)}
+                      onClick={() => setSelectedService(service)}
                     >
                       <motion.div 
                         className="relative w-full h-full"
@@ -313,48 +424,67 @@ const Services = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 cinematic-text uppercase tracking-wider">
                 SERVICES
               </h2>
-              <p className="text-white/70 dark:text-white/70 light-mode:text-black/70 max-w-2xl mx-auto mb-3 uppercase tracking-wide">
-                INDIVIDUELLE MEDIENPRODUKTIONEN FÜR DEINE VISION
-              </p>
               <p className="text-white/60 dark:text-white/60 light-mode:text-black/60 max-w-2xl mx-auto">
                 Von kreativen Werbeproduktionen bis hin zu einzigartigen Event-Coverages – entdecke meine Services, die Geschichten lebendig machen.
               </p>
             </div>
           }
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 h-full overflow-auto">
-            {services.map((service) => (
+          <AnimatePresence mode="wait">
+            {selectedService ? (
               <motion.div
-                key={service.id}
-                className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-white/5' : 'bg-black/5'} backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 cursor-pointer`}
-                onClick={() => openServiceDetails(service)}
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.98 }}
+                key="service-detail"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="h-full overflow-auto"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
-                    <img 
-                      src={service.imageUrl} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover"
+                <div className="flex justify-between items-center p-4 sticky top-0 backdrop-blur-sm z-10">
+                  <h3 className="font-bold text-lg">{selectedService.title}</h3>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    onClick={() => setSelectedService(null)}
+                    className="rounded-full"
+                  >
+                    <X size={20} />
+                  </Button>
+                </div>
+                <ServiceDetail service={selectedService} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="service-categories"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="h-full flex flex-col"
+              >
+                <div className="p-4">
+                  <h3 className={`font-bold text-xl mb-4 text-center ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                    Unsere Leistungen
+                  </h3>
+                  <CategoryList />
+                </div>
+                
+                <div className="flex-1 overflow-auto p-4 grid grid-cols-1 gap-4">
+                  {filteredServices.map((service) => (
+                    <ServiceCard 
+                      key={service.id} 
+                      service={service} 
+                      onClick={() => setSelectedService(service)} 
                     />
-                  </div>
-                  <div>
-                    <h3 className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                      {service.title}
-                    </h3>
-                    <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'}`}>
-                      {service.shortDescription}
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
         </ContainerScroll>
       )}
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+      <Dialog open={!!selectedService && isMobile} onOpenChange={(open) => !open && setSelectedService(null)}>
         <DialogContent className={`${theme === 'dark' ? 'bg-black/95 border-white/10 text-white' : 'bg-white/95 border-black/10 text-black'} max-w-4xl p-0 overflow-hidden`}>
           <DialogTitle className="sr-only">Service Details</DialogTitle>
           <AnimatePresence>
@@ -370,62 +500,7 @@ const Services = () => {
                   <X size={24} />
                 </DialogClose>
                 
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Badge className="text-xs font-medium bg-[#FFCC00]/90 text-black rounded-full">
-                      {selectedService.category}
-                    </Badge>
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold uppercase tracking-wide">{selectedService.title}</h2>
-                  </div>
-                  
-                  <p className={`${theme === 'dark' ? 'text-white/80' : 'text-black/80'} mb-8`}>{selectedService.description}</p>
-                  
-                  {selectedService.media && selectedService.media.length > 0 && (
-                    <Carousel className="w-full mb-8">
-                      <CarouselContent>
-                        {selectedService.media.map((src, idx) => (
-                          <CarouselItem key={idx} className="h-[450px]">
-                            <div className="h-full w-full flex items-center justify-center overflow-hidden rounded-md">
-                              <img 
-                                src={src} 
-                                alt={`${selectedService.title} - Bild ${idx + 1}`} 
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                      <CarouselPrevious className={`left-4 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
-                      <CarouselNext className={`right-4 ${theme === 'dark' ? 'bg-black/50 hover:bg-black/70 text-white' : 'bg-white/50 hover:bg-white/70 text-black'} border-0`} />
-                    </Carousel>
-                  )}
-                  
-                  <div className="space-y-5 mb-8">
-                    <h3 className="text-xl font-semibold mb-4 uppercase tracking-wide">Das bieten wir dir:</h3>
-                    {selectedService.features.map((feature) => (
-                      <div key={feature.id} className="flex items-start space-x-3">
-                        <div className="shrink-0 mt-0.5">
-                          <div className="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
-                            <ChevronRight size={14} className="text-black" />
-                          </div>
-                        </div>
-                        <div>
-                          <p className="font-medium">{feature.title}</p>
-                          <p className={`text-sm ${theme === 'dark' ? 'text-white/70' : 'text-black/70'} mt-1`}>{feature.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-center mt-6">
-                    <Button 
-                      className="px-8 py-6 bg-[#FFCC00] text-black hover:bg-[#FFCC00]/90 rounded-full text-sm uppercase tracking-wider"
-                      asChild
-                    >
-                      <a href="/kontakt">Jetzt Projekt starten</a>
-                    </Button>
-                  </div>
-                </div>
+                <ServiceDetail service={selectedService} />
               </motion.div>
             )}
           </AnimatePresence>
